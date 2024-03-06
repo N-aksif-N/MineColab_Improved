@@ -5,7 +5,7 @@ An alternative [Minecolab project](https://github.com/thecoder-001/MineColab). E
 
 Bug fixed (java error)
 
-Get mod/plugin (modrinth), modpack (curseforge)
+Get mod/plugin (modrinth), modpack (curseforge - intested)
 
 Server properties, server MOTD, and server icon configuration.
 
