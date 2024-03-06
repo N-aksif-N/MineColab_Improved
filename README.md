@@ -1,4 +1,4 @@
-# MineColabImproved
+# MineColab [Improved]
 An alternative [Minecolab project](https://github.com/thecoder-001/MineColab). Easy to use, flexible edited. 
 
 **New Features:**
