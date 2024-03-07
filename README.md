@@ -39,17 +39,16 @@ Of course, it's able to do it but with a little hard works. Google colab is a fr
 3. Read through the notebook, most of the code is self explanatory. Run the cells which are useful for your use-case.
 
 1. Run the first cell which runs the Minecraft server.
-2. Now you have three options. You can either use ngrok, playit.gg or cloudflare's argo. Ngrok is easy to setup and doesn't requires anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit.gg's implementation is unpolished at the moment (debug log spam) but offers convenient static subdomains.
+2. Now you have three options. You can either use ngrok, playit.gg or cloudflare's argo. Ngrok is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit.gg's implementation is unpolished at the moment (debug log spam) but offers convenient static subdomains.
   * Ngrok:
-    Change `tunnel_service` variable and follow the prompts.
-  * Cloudflare argo:
-    - If 'Your free tunnel has started!' notification appears => Done.
+    Change the `tunnel_service` variable and follow the prompts.
+  * Cloudflare Argo:
+    - If the 'Your free tunnel has started!' notification appears => Done.
     - Access to your server: 
     1. Download [Cloudflared client](https://github.com/cloudflare/cloudflared/releases/).
-    2. Launch the binary with `<your cloudflared file name> access tcp --hostname <tunnel_address> --url 127.0.0.1:25565` (note: tunnel_address is your address which has been set on your cloudflare)
-    4. Finally, connect to `127.0.0.1:25565` from the minecraft client located in that machine.
-  * Playit.gg:
-    Change `tunnel_service` variable, ignore the debug output _(todo:fix)_ and follow the prompts.
+    2. Launch the binary with `<your cloudflare file name> access tcp --hostname <tunnel_address> --url 127.0.0.1:25565` (note: tunnel_address is your address which has been set on your cloudflare)
+    4. Finally, connect to `127.0.0.1:25565` from the minecraft client which is located in that machine.
+  * PlayIt: Ignore the debug output _(todo:fix)_ and follow the prompts.
 
 ## :zap:  So, how does it actually work?
 As Google Colab is a VM running Ubuntu server as base OS, it can be easily used as a Minecraft server. Here are the steps which the notebook performs to setup the server:
