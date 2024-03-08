@@ -13,6 +13,7 @@ Of course, it's possible to do it but with a little hard work. Google Colab is a
 
 ## :page_with_curl: Instructions
 - Open the notebook in Google Colab.
+- RUN THE SET UP CELL (important)
 - Read through the notebook, most of the code is self-explanatory. Run the cells that are useful for your use case.
 
 Create Minecraft server
