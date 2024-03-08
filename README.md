@@ -44,11 +44,12 @@ Because MInecolab [Improved] is an alternative miecolab project so it has all th
 Additionally, Minecolab [Improved] has more new features:
 
  1. Bug fixed (java error)
- 2. Get mod/plugin (modrinth), modpack (curseforge - intested)
+ 2. Get mod, plugin, mod pack, shaders pack and data pack from 2 main web: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
  3. Server properties, server MOTD, and server icon configuration.
  4. Logs View.
- 5. File Backup.
+ 5. Server Backup.
  6. Expanded software (forge, fabric, vanilla, snapshot, paper, purpur)
+ 7. See all work that has been done, in processed or what i want to do in the future from [minecolab roads map](https://github.com/users/N-aksif-N/projects/1)
 
 ## 🐛 Found a bug?
 
