@@ -9,14 +9,14 @@ Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/t
 
 ## :moneybag:  Can Minecolab server online 24/7?
 
-Of course, it's possible to do it but with a little hard work. Google Colab is a free service but it is not suited for 24/7 so you can use deepnote instead. Or if you wanna use google collab you may need some tricks or friends to make the web online and accept the captcha manually.
+Of course, it's possible but with a little hard work. Google Colab is a free service and it is not suited for 24/7 online so you can use [deepnote](https://deepnote.com/) instead. Or if you still want to use google collab you may need some tricks or friends to make the web online and accept the captcha manually.
 
 ## :page_with_curl: Instructions
 - Open the notebook in Google Colab.
-- RUN THE SET UP CELL (important)
+- RUN THE SET-UP CELL (important)
 - Read through the notebook, most of the code is self-explanatory. Run the cells that are useful for your use case.
 
-Create Minecraft server
+**Create Minecraft server**
 1. Run the cell that creates the Minecraft server.
 2. After that, you have three options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit may get bugged at this point but it gives users a static domain and does not require any hard work.
 - **[Ngrok](https://ngrok.com)**
@@ -27,11 +27,11 @@ Create Minecraft server
     - Access to your server: 
     1. Download [Cloudflared client](https://github.com/cloudflare/cloudflared/releases/).
     2. Launch the binary with `<your Cloudflare file name> access tcp --hostname <tunnel_address> --url 127.0.0.1:25565` (note: tunnel_address is your address which has been set on your Cloudflare)
-    4. Finally, connect to `127.0.0.1:25565` from the minecraft client which is located in that machine.
+    4. Finally, connect to `127.0.0.1:25565` from the Minecraft client which is located in that machine.
 - **[PlayIt](https://playit.gg/)**: follow the prompts.
 
 ## :zap:  So, how does it actually work?
-Because MInecolab [Improved] is an alternative miecolab project so it has all the main features (minecolab project does): 
+Because MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
  
  1. Update the system's apt-cache.
  2. Install Openjdk-16 (Java) through apt-get.
@@ -39,17 +39,17 @@ Because MInecolab [Improved] is an alternative miecolab project so it has all th
  4. Setup Argo/ngrok/playit Tunnel (Opening a tunnel at port 25565) depending on the `tunnel_service` variable.
  5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of my Google Drive.)
  6. List/Print the file list on the screen to indicate successful directory change.
- 7. Startup the Minecraft server (with optimized JVM parameters from [Aikar's guide)](https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/)
+ 7. Startup the Minecraft server (with optimized JVM parameters from [Aikar's guide)](https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/) and from GC logging
 
 Additionally, Minecolab [Improved] has more new features:
 
  1. Bug fixed (java error)
- 2. Get mod, plugin, mod pack, shaders pack and data pack from 2 main web: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
+ 2. Get mod, plugin, mod pack, shaders pack, and data pack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
  3. Server properties, server MOTD, and server icon configuration.
  4. Logs View.
  5. Server Backup.
  6. Expanded software (forge, fabric, vanilla, snapshot, paper, purpur)
- 7. See all work that has been done, in processed or what i want to do in the future from [minecolab roads map](https://github.com/users/N-aksif-N/projects/1)
+- See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 
 ## 🐛 Found a bug?
 
