@@ -16,7 +16,7 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 - RUN THE SET-UP CELL (important)
 - Read through the notebook, most of the code is self-explanatory. Run the cells that are useful for your use case.
 
-**Create Minecraft server**
+### **Create Minecraft server**
 1. Run the cell that creates the Minecraft server.
 2. After that, you have three options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit may get bugged at this point but it gives users a static domain and does not require any hard work.
 - **[Ngrok](https://ngrok.com)**
@@ -50,6 +50,9 @@ Additionally, Minecolab [Improved] has more new features:
  5. Server Backup.
  6. Expanded software (forge, fabric, vanilla, snapshot, paper, purpur)
 - See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
+
+## **License:**
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
 ## 🐛 Found a bug?
 
