@@ -2,7 +2,9 @@
 <h1 align="center">MineColab</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
 <a href="https://colab.research.google.com/drive/1XaKGzktNHVr3o2rf4SuwlkuwDmQapYal?usp=sharing" target="_parent"><img align="right" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+<a target="_blank" href="https://github.com/liyin2015/python-coding-interview"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star"></a>&nbsp;
 
+                                                                                 
 ## :hear_no_evil:  First of all, what is Mine Colab [Improved]?
 
 Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the MIT. Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)
