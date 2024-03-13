@@ -2,7 +2,7 @@
 <h1 align="center">MineColab</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
 <a href="https://colab.research.google.com/drive/1XaKGzktNHVr3o2rf4SuwlkuwDmQapYal?usp=sharing" target="_parent"><img align="right" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-<a target="_blank" href="https://github.com/liyin2015/python-coding-interview"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star"></a>&nbsp;
+<a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star"></a>&nbsp;
 
                                                                                  
 ## :hear_no_evil:  First of all, what is Mine Colab [Improved]?
