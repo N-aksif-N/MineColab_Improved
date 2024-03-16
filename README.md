@@ -1,24 +1,26 @@
 <p align="center"><a href="https://github.com/thecoder-001/MineColab"><img src="https://github.com/thecoder-001/MineColab/blob/master/Logo.png" alt="Logo" height="80"/></a></p>
 <h1 align="center">MineColab</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
-<a href="https://colab.research.google.com/drive/1XaKGzktNHVr3o2rf4SuwlkuwDmQapYal?usp=sharing" target="_parent"><img align="right" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-<a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star"></a>&nbsp;
+<p align="right">
+  <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
+  <a href="https://colab.research.google.com/drive/1XaKGzktNHVr3o2rf4SuwlkuwDmQapYal?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
 
                                                                                  
-## :hear_no_evil:  First of all, what is Mine Colab [Improved]?
+# :hear_no_evil:  First of all, what is Mine Colab [Improved]?
 
 Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the MIT. Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)
 
-## :moneybag:  Can Minecolab server online 24/7?
+# :moneybag:  Can Minecolab server online 24/7?
 
 Of course, it's possible but with a little hard work. Google Colab is a free service and it is not suited for 24/7 online so you can use [deepnote](https://deepnote.com/) instead. Or if you still want to use google collab you may need some tricks or friends to make the web online and accept the captcha manually.
 
-## :page_with_curl: Instructions
+# :page_with_curl: Instructions
 - Open the notebook in Google Colab.
 - RUN THE SET-UP CELL (important)
 - Read through the notebook, most of the code is self-explanatory. Run the cells that are useful for your use case.
 
-### **Create Minecraft server**
+**Create Minecraft server**
 1. Run the cell that creates the Minecraft server.
 2. After that, you have three options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit may get bugged at this point but it gives users a static domain and does not require any hard work.
 - **[Ngrok](https://ngrok.com)**
@@ -32,7 +34,7 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
     4. Finally, connect to `127.0.0.1:25565` from the Minecraft client which is located in that machine.
 - **[PlayIt](https://playit.gg/)**: follow the prompts.
 
-## :zap:  So, how does it actually work?
+# :zap:  So, how does it actually work?
 Because MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
  
  1. Update the system's apt-cache.
@@ -52,9 +54,6 @@ Additionally, Minecolab [Improved] has more new features:
  5. Server Backup.
  6. Expanded software (forge, fabric, vanilla, snapshot, paper, purpur)
 - See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
-
-## **License:**
-[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
 ## 🐛 Found a bug?
 
