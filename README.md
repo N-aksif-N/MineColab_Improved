@@ -67,3 +67,5 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - Make regular backups of your world.
 - Google Colab is not designed to create Minecraft servers, but it can be done. Google Colab promises to work for 12 hours straight, however, it is possible that if no person is reviewing the page or using the console, basically if the page detects inactivity the process will end. The performance is approximately 12 GB of RAM, together with a processor with a power of 2.2 GHz and 2 threads, this is better than many paid hostings, but it doesn't have support and doesn't promise to be open always
 - It is not advisable to fill it with as many as plugins, which is more limited to this server than its own processor, it is not very good, any hosting for 12 USD can offer a higher quality server, if you are thinking of creating something for many users, it's much better.
+
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/N-aksif-N)
