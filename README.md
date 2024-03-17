@@ -9,7 +9,7 @@
                                                                                  
 # :hear_no_evil:  First of all, what is Mine Colab [Improved]?
 
-Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the MIT. Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)
+Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the [GNU License](https://github.com/N-aksif-N/Minecolab/blob/master/LICENSE). Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)
 
 # :moneybag:  Can Minecolab server online 24/7?
 
