@@ -52,7 +52,7 @@ Additionally, Minecolab [Improved] has more new features:
  3. Server properties, server MOTD, and server icon configuration.
  4. Logs View.
  5. Server Backup.
- 6. Expanded software (forge, fabric, vanilla, snapshot, paper, purpur)
+ 6. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur).
 - See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 
 ## 🐛 Found a bug?
