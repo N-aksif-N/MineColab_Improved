@@ -47,12 +47,13 @@ Because MInecolab [Improved] is an alternative Minecolab project. Therefore, it 
 
 Additionally, Minecolab [Improved] has more new features:
 
- 1. Bug fixed (java error)
- 2. Get mod, plugin, modpack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
- 3. Server properties, server MOTD, and server icon configuration.
- 4. Logs viewing.
- 5. Server backup (to zip files).
- 6. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur).
+ 1. Bug fixed: java error, connect erupted, file didn't show up and so on.
+ 2. Performance improved
+ 3. Get mod, plugin, modpack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
+ 4. Server properties, server MOTD, and server icon configuration.
+ 5. Logs viewing.
+ 6. Server backup (to zip files).
+ 7. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur).
 - See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 
 ## 🐛 Found a bug?
@@ -62,6 +63,7 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - Suggest a new feature using this [template](https://github.com/N-aksif-N/MineColab/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
 
 ## 👍 Notes
+- The scipts has a hided function which is used for connecting [filebrowser](https://filebrowser.org/) through [ngrok](https://ngrok.com)
 - If something does not work, try using a VPN like [windscribe](https://windscribe.com) before opening an issue.
 - Switch between the three different tunnel providers and see which works best for you.
 - Make regular backups of your world.
