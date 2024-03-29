@@ -4,6 +4,7 @@
 <p align="right">
   <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
   <a href="https://colab.research.google.com/github/N-aksif-N/Minecolab/blob/free-config/MineColabImproved.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+  <a href="https://github.com/N-aksif-N/Minecolab/releases/download/0.0.1/MineColabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a>
 </p>
 
                                                                                  
