@@ -1,5 +1,5 @@
 <p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>
-<h1 align="center">MineColab</h1>
+<h1 align="center">Mine Colab [Improved]</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
 <p align="right">
   <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
