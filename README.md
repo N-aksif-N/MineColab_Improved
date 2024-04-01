@@ -74,5 +74,5 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/N-aksif-N)
 
-##**License:**   
+## **License:**   
 [![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
