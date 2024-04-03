@@ -36,7 +36,7 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 - **[PlayIt](https://playit.gg/)**: follow the prompts.
 
 # :zap:  So, how does it actually work?
-Because MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
+MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
  
  1. Update the system's apt-cache.
  2. Install Openjdk-16 (Java) through apt-get.
