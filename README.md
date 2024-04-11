@@ -39,7 +39,7 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
  
  1. Update the system's apt-cache.
- 2. Install Openjdk-16 (Java) through apt-get.
+ 2. Install Openjdk-8 (For Minecraft versions below 1.17) or Openjdk-17 (For Minecraft versions over or in 1.17) through apt-get.
  3. Mount Google Drive to access the Minecraft folder (Drive is used here to provide persistent storage).
  4. Setup Argo/ngrok/playit Tunnel (Opening a tunnel at port 25565) depending on the `tunnel_service` variable.
  5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of my Google Drive.)
