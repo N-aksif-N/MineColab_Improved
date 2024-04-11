@@ -4,7 +4,7 @@
 <p align="right">
   <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
   <a href="https://colab.research.google.com/github/N-aksif-N/MineColab_Improved/blob/free-config/MineColabImproved.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-  <a href="https://github.com/N-aksif-N/Minecolab/releases/download/0.0.1/MineColabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a> 
+  <a href="https://github.com/N-aksif-N/MineColab_Improved/releases/download/0.1.1/MinecolabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a> 
 </p>
 
                                                                                  
@@ -54,7 +54,7 @@ Additionally, Minecolab [Improved] has more new features:
  4. Server properties, server MOTD, and server icon configuration.
  5. Logs viewing.
  6. Server backup (to zip files).
- 7. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur, arclight) -- Currently fixing.
+ 7. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur, arclight, mohist, banner, velocity)
 - See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 
 ## 🐛 Found a bug?
