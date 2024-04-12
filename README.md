@@ -64,7 +64,7 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - Suggest a new feature using this [template](https://github.com/N-aksif-N/MineColab/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
 
 ## 👍 Notes
-- The scripts has a hidden function that is used for connecting [filebrowser](https://filebrowser.org/) through [ngrok](https://ngrok.com)
+- The scripts has a hidden function that is used for connecting [filebrowser](https://filebrowser.org/) through [ngrok](https://ngrok.com) ( in 0.0.1
 - Please use the FUNCTION in the notebook unless you want any ERRORS/BUGS.
 - If something does not work, try using a VPN like [windscribe](https://windscribe.com) before opening an issue.
 - Switch between the three tunnel providers and see which works best.
