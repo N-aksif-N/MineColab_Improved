@@ -50,12 +50,14 @@ Additionally, Minecolab [Improved] has more new features:
 
  1. Bug fixed: java error, connect erupted, file didn't show up, and so on.
  2. Performance improved
- 3. Get mod, plugin, modpack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
+ 3. Get mod, plugin, mod pack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
  4. Server properties, server MOTD, and server icon configuration.
  5. Logs viewing.
  6. Server backup (to zip files).
  7. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur, arclight, mohist, banner, velocity)
-- See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
+    
+## 🔮 **License:**   
+[![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
 
 ## 🐛 Found a bug?
 
@@ -64,7 +66,7 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - Suggest a new feature using this [template](https://github.com/N-aksif-N/MineColab/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
 
 ## 👍 Notes
-- The scripts has a hidden function that is used for connecting [filebrowser](https://filebrowser.org/) through [ngrok](https://ngrok.com) ( in 0.0.1 file)
+- See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 - Please use the FUNCTION in the notebook unless you want any ERRORS/BUGS.
 - If something does not work, try using a VPN like [windscribe](https://windscribe.com) before opening an issue.
 - Switch between the three tunnel providers and see which works best.
@@ -73,6 +75,3 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - It is not advisable to fill it with as many as plugins, which is more limited to this server than its own processor, it is not very good, any hosting for 12 USD can offer a higher quality server, if you are thinking of creating something for many users, it's much better.
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/N-aksif-N)
-
-## **License:**   
-[![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
