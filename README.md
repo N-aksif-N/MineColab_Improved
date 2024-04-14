@@ -10,13 +10,13 @@
 <details>
   <summary>Table of content</summary>
   
-  - [What is MinecolabImproved?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#hear_no_evil--first-of-all-what-is-mine-colab-improved)
-  - [Can Minecolab server online 24/7?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#moneybag--can-minecolab-server-online-247)
-  - [Instructions](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#page_with_curl-instructionshttps)
-  - [How does Minecolab actually work?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#zap--so-how-does-it-actually-work)
-  - [License](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-license)
-  - [Found a bug?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-found-a-bug)
-  - [Notes](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-notes)
+  - [ :hear_no_evil: What is MinecolabImproved?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#hear_no_evil--first-of-all-what-is-mine-colab-improved)
+  - [ :moneybag: Can Minecolab server online 24/7?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#moneybag--can-minecolab-server-online-247)
+  - [ :page_with_curl: Instructions](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#page_with_curl-instructionshttps)
+  - [ :zap: How does Minecolab actually work?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#zap--so-how-does-it-actually-work)
+  - [ 🔮 License](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-license)
+  - [ 🐛 Found a bug?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-found-a-bug)
+  - [ 👍 Notes](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#-notes)
 </details>
                                                                                  
 # :hear_no_evil:  First of all, what is Mine Colab [Improved]?
@@ -75,9 +75,9 @@ Additionally, Minecolab [Improved] has more new features:
 - Report the bug by creating a new issue and use this helpful [issue template](https://github.com/N-aksif-N/MineColab/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
 Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - Suggest a new feature using this [template](https://github.com/N-aksif-N/MineColab/blob/main/.github/ISSUE_TEMPLATE/feature_request.md).
+- See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 
 ## 👍 Notes
-- See all work that has been done, in processed, or what I want to do in the future from **[minecolab improve roadmap](https://github.com/users/N-aksif-N/projects/1)**
 - Please use the FUNCTION in the notebook unless you want any ERRORS/BUGS.
 - If something does not work, try using a VPN like [windscribe](https://windscribe.com) before opening an issue.
 - Switch between the three tunnel providers and see which works best.
