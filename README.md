@@ -10,7 +10,7 @@
 <details>
   <summary>Table of content</summary>
   
-  - [ :hear_no_evil: What is MinecolabImproved?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#hear_no_evil--first-of-all-what-is-mine-colab-improved)
+  - [ :hear_no_evil: What is Minecolab_Improved?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#hear_no_evil--first-of-all-what-is-mine-colab-improved)
   - [ :moneybag: Can Minecolab server online 24/7?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#moneybag--can-minecolab-server-online-247)
   - [ :page_with_curl: Instructions](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#page_with_curl-instructionshttps)
   - [ :zap: How does Minecolab actually work?](https://github.com/N-aksif-N/MineColab_Improved/tree/master/?tab=readme-ov-file#zap--so-how-does-it-actually-work)
