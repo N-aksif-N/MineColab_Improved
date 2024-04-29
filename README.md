@@ -63,22 +63,22 @@ Additionally, Minecolab [Improved] has more new features:
 2. Performance Improvements: The project has been optimized for better performance, making it more efficient.
 3. Mod and Plugin Support: You can now easily integrate mods, plugins, and mod packs from two primary sources: Modrinth and CurseForge.
 4. Server Configuration:
-  - Server Properties: Customize server properties such as game rules, difficulty, and world settings.
-  - Server MOTD (Message of the Day): Describe the server, promote features, create announcements, attract attention.
+    - Server Properties: Customize server properties such as game rules, difficulty, and world settings.
+    - Server MOTD (Message of the Day): Describe the server, promote features, create announcements, attract attention.
 5. Server Icon Configuration: Choose an icon to represent your server visually.
 6. Logs Viewing: Access and review server logs to troubleshoot issues or monitor server activity.
 7. Server Backup: Create backups of your server data in zip files, ensuring data safety.
 8. Expanded Software Support:
-  - Forge: Use the popular Forge modding platform.
-  - Fabric: Opt for the lightweight Fabric mod loader.
-  - Vanilla: Run a vanilla Minecraft server.
-  - Snapshot: Experiment with the latest Minecraft snapshots.
-  - Paper: Utilize the Paper server software.
-  - Purpur: Explore the Purpur server implementation.
-  - Arclight: Try out the Arclight server software.
-  - Mohist: Use Mohist, which combines Forge and Fabric.
-  - Banner: Deploy a Banner server.
-  - Velocity: Set up a Velocity proxy server.
+    - Forge: Use the popular Forge modding platform.
+    - Fabric: Opt for the lightweight Fabric mod loader.
+    - Vanilla: Run a vanilla Minecraft server.
+    - Snapshot: Experiment with the latest Minecraft snapshots.
+    - Paper: Utilize the Paper server software.
+    - Purpur: Explore the Purpur server implementation.
+    - Arclight: Try out the Arclight server software.
+    - Mohist: Use Mohist, which combines Forge and Fabric.
+    - Banner: Deploy a Banner server.
+    - Velocity: Set up a Velocity proxy server.
         
 ## 🔮 **License:**   
 [![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
