@@ -53,20 +53,33 @@ MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all 
  2. Install Openjdk-8 (For Minecraft versions below 1.17) or Openjdk-17 (For Minecraft versions over or in 1.17) through apt-get.
  3. Mount Google Drive to access the Minecraft folder (Drive is used here to provide persistent storage).
  4. Setup Argo/ngrok/playit Tunnel (Opening a tunnel at port 25565) depending on the `tunnel_service` variable.
- 5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of my Google Drive.)
+ 5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of your Google Drive.)
  6. List/Print the file list on the screen to indicate successful directory change.
  7. Startup the Minecraft server (with optimized JVM parameters from [Aikar's guide)](https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/) and from GC logging
 
 Additionally, Minecolab [Improved] has more new features:
 
- 1. Bug fixed: java error, connect erupted, file didn't show up, and so on.
- 2. Performance improved
- 3. Get mod, plugin, mod pack from 2 main webs: [modrinth](https://modrinth.com/) and [curseforge](https://www.curseforge.com/minecraft)
- 4. Server properties, server MOTD, and server icon configuration.
- 5. Logs viewing.
- 6. Server backup (to zip files).
- 7. Expanded software support (forge, fabric, vanilla, snapshot, paper, purpur, arclight, mohist, banner, velocity)
-    
+1. Bug Fixes: Mine Colab [Improved] addresses issues like Java errors, connection disruptions, and missing files, ensuring a smoother experience.
+2. Performance Improvements: The project has been optimized for better performance, making it more efficient.
+3. Mod and Plugin Support: You can now easily integrate mods, plugins, and mod packs from two primary sources: Modrinth and CurseForge.
+4. Server Configuration:
+  - Server Properties: Customize server properties such as game rules, difficulty, and world settings.
+  - Server MOTD (Message of the Day): Describe the server, promote features, create announcements, attract attention.
+5. Server Icon Configuration: Choose an icon to represent your server visually.
+6. Logs Viewing: Access and review server logs to troubleshoot issues or monitor server activity.
+7. Server Backup: Create backups of your server data in zip files, ensuring data safety.
+8. Expanded Software Support:
+  - Forge: Use the popular Forge modding platform.
+  - Fabric: Opt for the lightweight Fabric mod loader.
+  - Vanilla: Run a vanilla Minecraft server.
+  - Snapshot: Experiment with the latest Minecraft snapshots.
+  - Paper: Utilize the Paper server software.
+  - Purpur: Explore the Purpur server implementation.
+  - Arclight: Try out the Arclight server software.
+  - Mohist: Use Mohist, which combines Forge and Fabric.
+  - Banner: Deploy a Banner server.
+  - Velocity: Set up a Velocity proxy server.
+        
 ## 🔮 **License:**   
 [![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
 
