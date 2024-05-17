@@ -2,7 +2,7 @@
 <h1 align="center">Mine Colab [Improved]</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
 <p align="right">
-  <img src="https://discordapp.com/api/guilds/1214801871827501097/widget.png?style=shield" alt="Discord Minecolab Support"/>
+  <a target="_blank" href="https://discord.gg/F9nPJTn7Nu"><img src="https://discordapp.com/api/guilds/1214801871827501097/widget.png?style=shield" alt="Discord Minecolab Support"></a>
   <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
   <a href="https://colab.research.google.com/github/N-aksif-N/MineColab_Improved/blob/free-config/MineColabImproved.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
   <a href="https://github.com/N-aksif-N/MineColab_Improved/releases/download/0.1.1/MinecolabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a> 
