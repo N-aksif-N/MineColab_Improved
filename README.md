@@ -50,16 +50,19 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 - **[Localtonet](https://localtonet.com/)**:
   
   1. Navigate to [TCP-UDG](https://localtonet.com/tunnel/tcpudp) page. Select TCP in Protocol Types.
-  2. Get authtoken from [Authtoken](https://localtonet.com/usertoken).
+  2. Get your authtoken from [Authtoken](https://localtonet.com/usertoken).
   3. Pick the server you'd like your tunnel to operate on.
   4. Input the IP and Port values the tunnel will listen to, in this case, for Minecraft, it's typically IP: 127.0.0.1 and Port: 25565.
   5. Finally, create and start your tunnel by pressing the Start button.
 
   - Read more on [how-to-use-localtonet-with-minecraft](https://localtonet.com/documents/using-localtonet-with-minecraft)
+  
+- **[Zrok](https://zrok.io/)**: 
+  1. Download the zrok app through [link](https://docs.zrok.io/docs/getting-started/)
+  2. Open the shell. Type `zrok invite` to sign up and get the authtoken
+  3. Follow the prompts
 
 - **[PlayIt](https://playit.gg/)**: follow the prompts.
-
-- **[Zrok](https://zrok.io/)**: follow the prompts
 
 # :zap:  So, how does it actually work?
 MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
