@@ -35,7 +35,7 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 
 **Create Minecraft server**
 1. Run the cell that creates the Minecraft server.
-2. After that, you have three options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok, Localtonet is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit, Zrok may get bugged at this point but it gives users a static domain and does not require any hard work.
+2. After that, you have five options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok, Localtonet is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit, Zrok may get bugged at this point but it is more reliable and does not require any hard work.
    
 - **[Ngrok](https://ngrok.com)**
   + Follow the prompts.
