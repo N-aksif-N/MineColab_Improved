@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/thecoder-001/MineColab"><img src="https://github.com/thecoder-001/MineColab/blob/master/Logo.png" alt="Logo" height="80"/></a></p>
+<p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>
 <h1 align="center">MineColab</h1>
 <p align="center">Run Minecraft Server on Google Colab</p>
 <p align="right">
