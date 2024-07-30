@@ -35,13 +35,7 @@ def COLABCONFIG_LOAD(server_name) -> dict:
   else:
     ERROR('Please checking whether you deleted your colabconfig file or not.')
     return {'server_type': False}
-
-def disable():
-  if st.session_state.disabled == True:
-    st.session_state.disabled = False
-  else:
-    st.session_state.disabled = True
-
+    
 def starting(server_name):
   if st.session_state.Starting[server_name][1] == True:
     st.session_state.Starting[server_name] = ['Start', False]
