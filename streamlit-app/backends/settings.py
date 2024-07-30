@@ -1,7 +1,7 @@
 from requests import get
 from time import sleep
 from json import load, dump, loads
-from os import environ, listdir, makedirs, getcwd, chdir, walk, remove, getcwd
+from os import environ, listdir, makedirs, getcwd, chdir, walk, remove
 from os import system as call
 from os.path import exists, isdir, join, isfile
 from jproperties import Properties
