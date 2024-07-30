@@ -1,7 +1,7 @@
 from requests import get
 from time import sleep
 from json import load, dump, loads
-from os import environ, listdir, makedirs, getcwd, chdir, walk, remove
+from os import environ, listdir, makedirs, getcwd, chdir, walk, remove, getcwd
 from os import system as call
 from os.path import exists, isdir, join, isfile
 from jproperties import Properties
@@ -15,10 +15,10 @@ from streamlit_ace import st_ace
 yaml = YAML()
 #------------------------------------------------------------------------------------------------------------------------------------#
 
-path = '' #/home/esjuda/Downloads
-drive_path = path + '/content/drive/MyDrive/minecraft'
-SERVERCONFIG = path + drive_path + '/serverconfig.txt'
-USER = path + '/content/drive/MyDrive/streamlit-app/user.txt'
+path = getcwd()
+drive_path = join(path, 'content/drive/MyDrive/minecraft')
+SERVERCONFIG = join(path, drive_path, 'serverconfig.txt')
+USER = join(path, 'content/drive/MyDrive/streamlit-app/user.txt')
 if getcwd() != drive_path: chdir(drive_path)
 def COLABCONFIG(server_name):
   return f"{drive_path}/{server_name}/colabconfig.txt"
