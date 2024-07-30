@@ -1,1 +1,1 @@
-{'choose': True, 'user': {'authtoken': ''}
+{'choose': true, 'user': {'authtoken': ''}
