@@ -6,7 +6,7 @@ from time import sleep
 from backends.settings import ERROR, COLABCONFIG_LOAD, PROGRESS, SERVERCONFIG, drive_path, path, USER
 from time import sleep
 
-pages = load(open(USER)); uid = dict(st.context.headers)
+pages = load(open(USER)); uid = dict(st.context.headers); user_name = ''
 del uid['Sec-Websocket-Key']
 uid = str(uid)
 for user_ in pages['user']:
@@ -14,6 +14,7 @@ for user_ in pages['user']:
     if uid in pages['user'][user_]['user_id']:
       if pages['user'][user_]['server_in_use'] != '': st.switch_page(st.Page('frontends/main_page.py'))
       user_name = user_; break
+if user_name == '': st.switch_page(st.Page('frontends/login.py'))
 serverconfig = load(open(SERVERCONFIG))
 drive_dir = listdir(drive_path); drive_dir.remove('serverconfig.txt');  drive_dir.remove('logs');
 
