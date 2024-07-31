@@ -31,9 +31,10 @@ with col2:
     st.switch_page(st.Page('frontends/choose_server.py'))
 with col3:
   if st.button('Exit to main page', use_container_width= True):
-    if user['user'][user_name]['server_in_use'] == '':
-      user['user'][user_name]['server_in_use'] = drive_dir[0]
-      dump(user, open(USER, 'w'))
-      sleep(1)
-    st.switch_page(st.Page('frontends/main_page.py'))
+    if drive_dir == []:
+      if user['user'][user_name]['server_in_use'] == '':
+        user['user'][user_name]['server_in_use'] = drive_dir[0]
+        dump(user, open(USER, 'w'))
+        sleep(1)
+      st.switch_page(st.Page('frontends/main_page.py'))
 st.warning('Please do not change the server_name during creating new server.')
