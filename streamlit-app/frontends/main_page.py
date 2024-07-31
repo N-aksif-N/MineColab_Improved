@@ -84,7 +84,7 @@ def SERVER_TYPE_2(server_type, server_version):
     with col2:
       tunnel_service = st.selectbox('Tunnel service ', ('default', 'ngrok', 'argo', 'zrok', 'playit', 'localtonet'), index=None)
     change = st.button('Change', use_container_width=True)
-    if change is False and version is None and tunnel_service is None:
+    if change is False or version is None or tunnel_service is None:
       st.stop()
     if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
     SET_SERVERCONFIG(tunnel_service, server_name)
