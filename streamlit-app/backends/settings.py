@@ -264,10 +264,7 @@ def Install_server(server_name, server_type, version, tunnel_service):
   DOWNLOAD_FILE(content='', url= SERVERSJAR(server_type, version, jar = True), path = f"{drive_path}/{server_name}", file_name= jarname)
   sleep(10)
 
-def Delete_server(server_name: str):
-  LOG(f'Deleting {server_name}...')
-  # Auditing whether file is existed.
-  if exists(f'{drive_path}/{server_name}') == False: ERROR("You haven't installed yet.")
+def Delete_server(server_name, software= False):
   LOG(f'Found server {server_name}')
   sleep(10)
   # Remove the folder name in server config txt files
@@ -277,16 +274,20 @@ def Delete_server(server_name: str):
   dump(serverconfig, open(SERVERCONFIG, 'w'))
   sleep(10)
   # Delete folder without noticable
-  drive_dir = listdir(f'{drive_path}/{server_name}')
-  if exists(f'{drive_path}/{server_name}/tunnels'): drive_dir.remove('tunnels')
-  for i in drive_dir:
-    if isdir(f'{drive_path}/{server_name}/{i}'):
-      rmtree(f'{drive_path}/{server_name}/{i}')
-      sleep(5)
-    elif isfile(f'{drive_path}/{server_name}/{i}'):
-      remove(f'{drive_path}/{server_name}/{i}')
-      sleep(10)
-  LOG('Removing...')
+  if software:
+    drive_dir = listdir(f'{drive_path}/{server_name}')
+    if exists(f'{drive_path}/{server_name}/tunnels'): drive_dir.remove('tunnels')
+    for i in drive_dir:
+      if isdir(f'{drive_path}/{server_name}/{i}'):
+        rmtree(f'{drive_path}/{server_name}/{i}')
+        sleep(5)
+      elif isfile(f'{drive_path}/{server_name}/{i}'):
+        remove(f'{drive_path}/{server_name}/{i}')
+        sleep(10)
+  else:
+    rmtree(f'{drive_path}/{server_name}')
+    sleep(10)
+  LOG(f'Deleting {server_name}...')
   sleep(10)
 
 def Server_Properties(server_properties, server_name, Slots, Gamemode, Difficulty, Cracked, PVP, Command_block, Fly, Villagers, Animals, Monsters, Whitelist, Nether, Force_gamemode, Spawn_protection, Resource_pack_required, Resource_pack, Resource_pack_prompt):
