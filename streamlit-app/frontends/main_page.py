@@ -26,6 +26,53 @@ serverconfig = load(open(SERVERCONFIG))
 colabconfig = COLABCONFIG_LOAD(server_name)
 if permission['owner'] == True:
   permission = {'console': True, 'software': True, 'log viewing': True, 'world': True, 'server settings': True, 'owner': True}
+  
+@st.fragment
+def SHARE_ACCESS():
+  if permission['owner'] == True:
+    st.header('Share access')
+    user = load(open(f'{path}/content/drive/My Drive/streamlit-app/user.txt'))
+    dict_ = user['user']
+    for user_ in dict_:
+      if user_ != 'authtoken':
+        with st.expander(f'User: {user_}'):
+          world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False
+          with st.container(border=True):
+            col1, col2, col3 = st.columns(3, vertical_alignment="top")
+            with col1:
+              st.checkbox('Run/stop server', value=user['user'][user_]['permission']['console'], key=f'{user_}console')
+              st.checkbox('Software', value=user['user'][user_]['permission']['software'], key=f'{user_}server_type')
+            with col2:
+              st.checkbox('Log viewing', value=user['user'][user_]['permission']['log viewing'], key=f'{user_}logs')
+              st.checkbox('World', value=user['user'][user_]['permission']['world'], key=f'{user_}worlds')
+            with col3:
+              st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
+              st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
+            tmp, col2 = st.columns([9, 1], vertical_alignment="top")
+            with col2:
+              if st.button('Save', use_container_width=True, key= f'{user_}_save'):
+                if st.session_state[f'{user_}console']: console = True
+                if st.session_state[f'{user_}server_type']: software = True
+                if st.session_state[f'{user_}logs']: log_viewing = True
+                if st.session_state[f'{user_}worlds']: world = True
+                if st.session_state[f'{user_}server_settings']: server_settings = True
+                if st.session_state[f'{user_}administration']: owner = True
+                user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'world': world, 'server settings': server_settings, 'owner': owner}
+                dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+    col1, col2 = st.columns(2, vertical_alignment="bottom")
+    with col1:
+      user_name = st.text_input('User name: ', value='')
+    with col2:
+      if st.button('Create', use_container_width=True):
+        if user_name != '':
+          if user_name in user['user']:
+            ERROR('This username already exists')
+          else:
+            user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
+            dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+            st.rerun()
+  else:
+    st.warning('You do not have permission to get access to this page.')
 
 @st.fragment
 def SERVER_TYPE_2(server_type, server_version):
@@ -417,49 +464,7 @@ elif choice == 'Software':
 
 elif choice == 'Share acess':
 
-  if permission['owner'] == True:
-    st.header('Share access')
-    user = load(open(f'{path}/content/drive/My Drive/streamlit-app/user.txt'))
-    dict_ = user['user']
-    for user_ in dict_:
-      if user_ != 'authtoken':
-        with st.expander(f'User: {user_}'):
-          world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False
-          with st.container(border=True):
-            col1, col2, col3 = st.columns(3, vertical_alignment="top")
-            with col1:
-              st.checkbox('Run/stop server', value=user['user'][user_]['permission']['console'], key=f'{user_}console')
-              st.checkbox('Software', value=user['user'][user_]['permission']['software'], key=f'{user_}server_type')
-            with col2:
-              st.checkbox('Log viewing', value=user['user'][user_]['permission']['log viewing'], key=f'{user_}logs')
-              st.checkbox('World', value=user['user'][user_]['permission']['world'], key=f'{user_}worlds')
-            with col3:
-              st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
-              st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
-            tmp, col2 = st.columns([9, 1], vertical_alignment="top")
-            with col2:
-              if st.button('Save', use_container_width=True, key= f'{user_}_save'):
-                if st.session_state[f'{user_}console']: console = True
-                if st.session_state[f'{user_}server_type']: software = True
-                if st.session_state[f'{user_}logs']: log_viewing = True
-                if st.session_state[f'{user_}worlds']: world = True
-                if st.session_state[f'{user_}server_settings']: server_settings = True
-                if st.session_state[f'{user_}administration']: owner = True
-                user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'world': world, 'server settings': server_settings, 'owner': owner}
-                dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-    col1, col2 = st.columns(2, vertical_alignment="bottom")
-    with col1:
-      user_name = st.text_input('User name: ', value='')
-    with col2:
-      if st.button('Create', use_container_width=True):
-        if user_name != '':
-          if user_name in user['user']:
-            ERROR('This username already exists')
-          else:
-            user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
-            dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  SHARE_ACCESS()
 
 else:
   st.write('Are comming')
