@@ -243,24 +243,14 @@ def SERVERSJAR(server_type, version, all = False, jar = False):
 
 #--------------------------------------------------------------------------------------------------------------------------------#
 
-def Install_server(server_name, server_type, version, tunnel_service, ngrok_authtoken = '', ngrok_region = '', zrok_authtoken = '', localtonet_authtoken = '', server_config=True):
+def Install_server(server_name, server_type, version, tunnel_service):
   # Create folder
   LOG(f'Creating {drive_path}/{server_name}')
   MKDIR(f'{drive_path}/{server_name}')
   sleep(10)
-  # Load serverconfig
-  if server_config:
-    LOG('Configuring serverconfig.txt and colabconfig.txt')
-    serverconfig = load(open(SERVERCONFIG))
-    serverconfig['server_list'] += [server_name]
-    if serverconfig['ngrok_proxy'] == {"authtoken": "", "region": ""} and tunnel_service == 'ngrok': 
-      if ngrok_authtoken != '' or ngrok_region != '': serverconfig['ngrok_proxy']['authtoken'] = ngrok_authtoken; serverconfig['ngrok_proxy']['region'] = ngrok_region
-    elif tunnel_service == 'zrok' and serverconfig['zrok_proxy'] == {'authtoken': ''}: 
-      if zrok_authtoken != '': serverconfig['zrok_proxy']['authtoken'] = zrok_authtoken
-    elif tunnel_service == 'localtonet' and serverconfig['localtonet_proxy'] == {'authtoken': ''}: 
-      if localtonet_authtoken != '': serverconfig['localtonet_proxy']['authtoken'] = localtonet_authtoken
-    dump(serverconfig, open(SERVERCONFIG, 'w'))
-  sleep(10)
+
+  # For developer: PLEASE USE SET_SERVERCONFIG() to set the serverconfig before using THIS function!
+  
   # Get version
   if version == 'vanilla - latest_version': version = SERVERSJAR(server_type, version, all = True)
   else: version = version
