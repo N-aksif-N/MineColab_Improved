@@ -88,7 +88,9 @@ def SERVER_TYPE_2(server_type, server_version):
       st.stop()
     if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
     SET_SERVERCONFIG(tunnel_service, server_name)
+    sleep(5)
     Delete_server(server_name)
+    sleep(15)
     Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service, server_config=False)
 
 if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
