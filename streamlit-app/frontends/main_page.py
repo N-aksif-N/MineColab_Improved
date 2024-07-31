@@ -18,7 +18,9 @@ for user_ in user['user']:
     if uid in user['user'][user_]['user_id']:
       user_name = user_
       break
+if user_name == '': st.switch_page(st.Page('frontends/login.py'))
 server_name = user['user'][user_name]['server_in_use']
+if server_name == '': st.switch_page(st.Page('frontends/choose_server.py'))
 permission = user['user'][user_name]['permission']
 serverconfig = load(open(SERVERCONFIG))
 colabconfig = COLABCONFIG_LOAD(server_name)
