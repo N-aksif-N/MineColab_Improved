@@ -146,7 +146,8 @@ def SET_SERVERCONFIG(tunnel_service, server_name):
 
   # packages: streamlit     | json
   # methods: text_input     | load, dump
-
+  
+  LOG('Configuring serverconfig.txt and colabconfig.txt')
   serverconfig = load(open(SERVERCONFIG))
   serverconfig['server_list'] += [server_name]
   if serverconfig['ngrok_proxy'] == {"authtoken": "", "region": ""} and tunnel_service == 'ngrok':
@@ -168,7 +169,13 @@ def SET_SERVERCONFIG(tunnel_service, server_name):
   dump(serverconfig, open(SERVERCONFIG, 'w'))
 
 def SERVERSJAR(server_type, version, all = False, jar = False):
-  # Get the download URL (jar) AND return the detailed versions for each software (all)
+  '''Get the download URL (jar) AND return the detailed versions for each software (all)
+
+  packages: requests  | BeautifulSoup
+  method: GET         | html.parser
+  
+  '''
+  
   if all:
     Server_Jars_All = {
       'paper': 'https://api.papermc.io/v2/projects/paper', 'velocity': 'https://api.papermc.io/v2/projects/velocity',
@@ -195,6 +202,7 @@ def SERVERSJAR(server_type, version, all = False, jar = False):
       rJSON = GET('https://files.hypoglycemia.icu/v1/files/arclight/minecraft').json()['files']
       server_version  = [hit['name'] for hit in rJSON]
     return server_version
+    
   elif jar == True and version != None:
     # RETURN DOWNLOAD URL
     if server_type == 'vanilla' or server_type=='snapshot':
@@ -236,40 +244,47 @@ def SERVERSJAR(server_type, version, all = False, jar = False):
 #--------------------------------------------------------------------------------------------------------------------------------#
 
 def Install_server(server_name, server_type, version, tunnel_service, ngrok_authtoken = '', ngrok_region = '', zrok_authtoken = '', localtonet_authtoken = '', server_config=True):
-  # Auditing whether file is existed.
-  if exists(f'{drive_path}/{server_name}') == False:
-    # Create folder
-    MKDIR(f'{drive_path}/{server_name}')
-    sleep(10)
-    # Get version
-    if version == 'vanilla - latest_version': version = SERVERSJAR(server_type, version, all = True)
-    else: version = version
-    # Load serverconfig
+  # Create folder
+  LOG(f'Creating {drive_path}/{server_name}')
+  MKDIR(f'{drive_path}/{server_name}')
+  sleep(10)
+  # Load serverconfig
+  if server_config:
     LOG('Configuring serverconfig.txt and colabconfig.txt')
-    if server_config:
-      serverconfig = load(open(SERVERCONFIG))
-      serverconfig['server_list'] += [server_name]
-      if serverconfig['ngrok_proxy'] == {"authtoken": "", "region": ""} and tunnel_service == 'ngrok': serverconfig['ngrok_proxy']['authtoken'] = ngrok_authtoken; serverconfig['ngrok_proxy']['region'] = ngrok_region
-      elif tunnel_service == 'zrok' and serverconfig['zrok_proxy'] == {'authtoken': ''}: serverconfig['zrok_proxy']['authtoken'] = zrok_authtoken
-      elif tunnel_service == 'localtonet' and serverconfig['localtonet_proxy'] == {'authtoken': ''}: serverconfig['localtonet_proxy']['authtoken'] = localtonet_authtoken
-      dump(serverconfig, open(SERVERCONFIG, 'w'))
-    sleep(10)
-    # Set up colabconfig
-    colabconfig = {"server_type": server_type, "server_version": version, "tunnel_service" : tunnel_service}
-    dump(colabconfig, open(COLABCONFIG(server_name),'w'))
-    # Download jar file
-    LOG('Found URL. Downloading server.jar ...')
-    if server_type == 'forge': jarname = 'forge-installer.jar' # The jar file name (forge need a special process)
-    else: jarname = JAR_LIST_RUN[server_type]
-    DOWNLOAD_FILE(content='', url= SERVERSJAR(server_type, version, jar = True), path = f"{drive_path}/{server_name}", file_name= jarname)
-    sleep(10)
-  else: ERROR('Lol, you have already installed this server file')
+    serverconfig = load(open(SERVERCONFIG))
+    serverconfig['server_list'] += [server_name]
+    if serverconfig['ngrok_proxy'] == {"authtoken": "", "region": ""} and tunnel_service == 'ngrok': 
+      if ngrok_authtoken != '' or ngrok_region != '': serverconfig['ngrok_proxy']['authtoken'] = ngrok_authtoken; serverconfig['ngrok_proxy']['region'] = ngrok_region
+    elif tunnel_service == 'zrok' and serverconfig['zrok_proxy'] == {'authtoken': ''}: 
+      if zrok_authtoken != '': serverconfig['zrok_proxy']['authtoken'] = zrok_authtoken
+    elif tunnel_service == 'localtonet' and serverconfig['localtonet_proxy'] == {'authtoken': ''}: 
+      if localtonet_authtoken != '': serverconfig['localtonet_proxy']['authtoken'] = localtonet_authtoken
+    dump(serverconfig, open(SERVERCONFIG, 'w'))
+  sleep(10)
+  # Get version
+  if version == 'vanilla - latest_version': version = SERVERSJAR(server_type, version, all = True)
+  else: version = version
+  # Set up colabconfig
+  colabconfig = {"server_type": server_type, "server_version": version, "tunnel_service" : tunnel_service}
+  dump(colabconfig, open(COLABCONFIG(server_name),'w'))
+  # Download jar file
+  LOG('Found URL. Downloading server.jar ...')
+  if server_type == 'forge': jarname = 'forge-installer.jar' # The jar file name (forge need a special process)
+  else: jarname = JAR_LIST_RUN[server_type]
+  DOWNLOAD_FILE(content='', url= SERVERSJAR(server_type, version, jar = True), path = f"{drive_path}/{server_name}", file_name= jarname)
+  sleep(10)
 
-def Delete_server(server_name):
+def Delete_server(server_name: str):
   LOG(f'Deleting {server_name}...')
   # Auditing whether file is existed.
   if exists(f'{drive_path}/{server_name}') == False: ERROR("You haven't installed yet.")
   LOG(f'Found server {server_name}')
+  sleep(10)
+  # Remove the folder name in server config txt files
+  LOG('Configuring serverconfig.txt')
+  serverconfig = load(open(SERVERCONFIG));
+  serverconfig['server_list'].remove(server_name)
+  dump(serverconfig, open(SERVERCONFIG, 'w'))
   sleep(10)
   # Delete folder without noticable
   drive_dir = listdir(f'{drive_path}/{server_name}')
@@ -282,12 +297,6 @@ def Delete_server(server_name):
       remove(f'{drive_path}/{server_name}/{i}')
       sleep(10)
   LOG('Removing...')
-  sleep(10)
-  # Remove the folder name in server config txt files
-  LOG('Configuring serverconfig.txt')
-  serverconfig = load(open(SERVERCONFIG));
-  serverconfig['server_list'].remove(server_name)
-  dump(serverconfig, open(SERVERCONFIG, 'w'))
   sleep(10)
 
 def Server_Properties(server_properties, server_name, Slots, Gamemode, Difficulty, Cracked, PVP, Command_block, Fly, Villagers, Animals, Monsters, Whitelist, Nether, Force_gamemode, Spawn_protection, Resource_pack_required, Resource_pack, Resource_pack_prompt):
