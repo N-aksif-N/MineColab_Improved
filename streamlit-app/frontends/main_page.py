@@ -1,5 +1,5 @@
 from jproperties import Properties
-from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG
+from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen
 from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, ERROR, SERVERCONFIG, drive_path, path, USER
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -298,14 +298,7 @@ elif choice =='Settings':
 
   if permission['server settings'] == True:
     if exists(f"{drive_path}/{server_name}/server.properties") == False: ERROR(' Running your minecraft server before editing properties')
-    else:
-      
-      def booleen(str):
-        if str == 'true':
-          return True
-        elif str == 'false':
-          return False
-          
+    else:          
       st.divider()
       with st.container(border=True):
         col1, col2 = st.columns([0.75, 4], vertical_alignment="center")
