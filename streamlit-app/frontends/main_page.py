@@ -35,11 +35,12 @@ def SERVER_TYPE_2(server_type, server_version):
     with col2:
       tunnel_service = st.selectbox('Tunnel service ', ('default', 'ngrok', 'argo', 'zrok', 'playit', 'localtonet'), index=None)
     change = st.button('Change', use_container_width=True)
-    if change is True and version != None and tunnel_service != None:
-      if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
-      SET_SERVERCONFIG(tunnel_service, server_name)
-      Delete_server(server_name)
-      Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service, server_config=False)
+    if change is False and version is None and tunnel_service is None:
+      st.stop()
+    if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
+    SET_SERVERCONFIG(tunnel_service, server_name)
+    Delete_server(server_name)
+    Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service, server_config=False)
 
 if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
 elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
