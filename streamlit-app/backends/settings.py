@@ -41,7 +41,13 @@ def starting(server_name):
     st.session_state.Starting[server_name] = ['Start', False]
   else:
     st.session_state.Starting[server_name] = ['Stop', True]
-
+    
+def booleen(str):
+  if str == 'true':
+    return True
+  elif str == 'false':
+    return False
+    
 def ONLINE(server_name, player = False, status= False):
   if player:
     return 0
