@@ -69,7 +69,7 @@ def SHARE_ACCESS():
           else:
             user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
             dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-            st.rerun()
+            # st.rerun()
   else:
     st.warning('You do not have permission to get access to this page.')
 
