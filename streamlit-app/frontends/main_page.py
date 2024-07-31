@@ -429,25 +429,25 @@ elif choice == 'Log':
 elif choice == 'Software':
 
   if permission['software'] == True:
-    SERVERJAR_ = ['vanilla', 'snapshot', 'purpur', 'paper', 'velocity', 'fabric', 'forge', 'arclight', 'mohist', 'banner']
+    SERVERJAR_ = ['vanilla', 'purpur', 'fabric', 'arclight', 'snapshot', 'paper', 'forge', 'mohist', 'velocity', 'banner']
     button_list = []
     st.header('Software')
     placeholder = st.empty()
     with placeholder.container(border=True):
       col1, col2, col3 = st.columns(3, vertical_alignment='top')
       with col1:
-        for i in (0, 2, 5, 7):
+        for i in (0, 1, 2, 3):
           server_type = SERVERJAR_[i]
           button = st.button(f':green[{server_type}]', use_container_width= True)
           button_list.append(button)
       with col2:
-        for i in (1, 3, 6, 8):
+        for i in (4, 5, 6, 7):
           server_type = SERVERJAR_[i]
           button = st.button(f':green[{server_type}]', use_container_width= True)
           button_list.append(button)
       with col3:
         st.button('', use_container_width=True, disabled=True, key= 'ex_1')
-        server_type = SERVERJAR_[4]
+        server_type = SERVERJAR_[8]
         button = st.button(f':green[{server_type}]', use_container_width= True)
         button_list.append(button)
         st.button('', use_container_width=True, disabled=True, key= 'ex_2')
