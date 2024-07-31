@@ -31,7 +31,6 @@ if permission['owner'] == True:
 def SHARE_ACCESS():
   if permission['owner'] == True:
     st.header('Share access')
-    user = load(open(f'{path}/content/drive/My Drive/streamlit-app/user.txt'))
     dict_ = user['user']
     for user_ in dict_:
       if user_ != 'authtoken':
@@ -89,9 +88,9 @@ def SERVER_TYPE_2(server_type, server_version):
     if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
     SET_SERVERCONFIG(tunnel_service, server_name)
     sleep(5)
-    Delete_server(server_name)
+    Delete_server(server_name, software= True)
     sleep(15)
-    Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service, server_config=False)
+    Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service)
 
 if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
 elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
@@ -275,9 +274,9 @@ elif choice == 'Server':
       st.markdown(f'<center>IP:&nbsp;&nbsp;{st.session_state.ip}</center>', unsafe_allow_html= True)
       st.write('')
       if st.button('Log out', use_container_width=True):
-        sleep(2)
         user['user'][user_name]['server_in_use'] = ''
         dump(user, open(USER, 'w'))
+        sleep(2)
         st.switch_page(st.Page('frontends/choose_server.py'))
       if st.button('Delete', use_container_width= True):
         Delete_server(server_name)
@@ -300,11 +299,13 @@ elif choice =='Settings':
   if permission['server settings'] == True:
     if exists(f"{drive_path}/{server_name}/server.properties") == False: ERROR(' Running your minecraft server before editing properties')
     else:
+      
       def booleen(str):
         if str == 'true':
           return True
         elif str == 'false':
           return False
+          
       st.divider()
       with st.container(border=True):
         col1, col2 = st.columns([0.75, 4], vertical_alignment="center")
@@ -350,6 +351,7 @@ elif choice =='Settings':
               f.write(bytes_data)
             sleep(5)
             PROGRESS()
+            
       st.divider()
       st.subheader('Server properties')
       server_properties = Properties() # Download file
