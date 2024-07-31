@@ -80,7 +80,7 @@ def MKDIR(path: str):
   
   '''
 
-  if exists(path): ERROR(f'Directory {path} already existed')
+  if exists(path): pass
   else:
     try:
       LOG(f'Creating {path}')
