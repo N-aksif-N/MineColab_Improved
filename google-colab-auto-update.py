@@ -5,8 +5,8 @@ from time import sleep
 from json import dump
 from requests import get
 
-path = 'content/drive'
-drive_path = join(path, 'MyDrive/minecraft_server')
+path = '/content/drive'
+drive_path = path + '/MyDrive/minecraft_server'
 
 r = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/update.txt')
 if 'update=True' in r.text or exists(join(path, 'MyDrive/streamlit-app')) == False:
@@ -33,6 +33,6 @@ if 'update=True' in r.text or exists(join(path, 'MyDrive/streamlit-app')) == Fal
   if exists(drive_path) == False:
     makedirs(drive_path)
     makedirs(f'{drive_path}/logs')
-  if exists(join(path, drive_path, 'serverconfig.txt')) == False:
+  if exists(f'{path}/{drive_path}/serverconfig.txt')) == False:
     dump({"server_list": [], "ngrok_proxy" : {"authtoken" : '', "region" : ''}, "zrok_proxy": {"authtoken": ''}, "localtonet_proxy": {"authtoken": ''}}, open(drive_path + '/serverconfig.txt', 'w'))
 sleep(20)
