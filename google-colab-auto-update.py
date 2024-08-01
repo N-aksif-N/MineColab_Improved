@@ -27,12 +27,12 @@ if 'update=True' in r.text or exists(join(path, 'MyDrive/streamlit-app')) == Fal
     with open(f'MyDrive/streamlit-app/{key}', 'w') as f:
       r = get(dict[key])
       f.write(r.text)
-  dump({'choose': True, 'user': {'authtoken': ''}}, open(join(path, 'MyDrive/streamlit-app/user.txt'), 'w'))
+  dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
   # Creating minecraft_server folder
   sleep(10)
   if exists(drive_path) == False:
     makedirs(drive_path)
     makedirs(f'{drive_path}/logs')
   if exists(join(path, drive_path, 'serverconfig.txt')) == False:
-    dump({"server_list": [], "ngrok_proxy" : {"authtoken" : '', "region" : ''}, "zrok_proxy": {"authtoken": ''}, "localtonet_proxy": {"authtoken": ''}}, open(SERVERCONFIG, 'w'))
+    dump({"server_list": [], "ngrok_proxy" : {"authtoken" : '', "region" : ''}, "zrok_proxy": {"authtoken": ''}, "localtonet_proxy": {"authtoken": ''}}, open(drive_path + '/serverconfig.txt', 'w'))
 sleep(10)
