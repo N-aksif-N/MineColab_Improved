@@ -15,7 +15,7 @@ from streamlit_ace import st_ace
 yaml = YAML()
 #------------------------------------------------------------------------------------------------------------------------------------#
 
-path = 'content/drive/'
+path = '/content/drive'
 drive_path = join(path, 'MyDrive/minecraft_server')
 SERVERCONFIG = join(drive_path, 'serverconfig.txt')
 USER = join(path, 'MyDrive/streamlit-app/user.txt')
