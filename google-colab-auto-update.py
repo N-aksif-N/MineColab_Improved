@@ -19,9 +19,9 @@ if 'update=True' in r.text or exists(join(path, 'MyDrive/streamlit-app')) == Fal
          'frontends/create_page_1.py': 'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/create_page_1.py',
          'frontends/login.py':         'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/login.py',
          'frontends/main_page.py':     'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/main_page.py'}
-  makedirs('MyDrive/streamlit-app')
-  makedirs('MyDrive/streamlit-app/backends')
-  makedirs('MyDrive/streamlit-app/frontends')
+  makedirs(join(path, 'MyDrive/streamlit-app'))
+  makedirs(join(path, 'MyDrive/streamlit-app/backends'))
+  makedirs(join(path, 'MyDrive/streamlit-app/frontends'))
   sleep(10)
   for key in dict:
     with open(f'MyDrive/streamlit-app/{key}', 'w') as f:
