@@ -1,6 +1,7 @@
 from jproperties import Properties
-from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen, GET
+from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen
 from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, ERROR, SERVERCONFIG, drive_path, path, USER
+from requests import get
 import streamlit as st
 from streamlit_option_menu import option_menu
 from streamlit_ace import st_ace
@@ -157,10 +158,10 @@ if choice == 'Instructions':
             - Velocity: Set up a Velocity proxy server.
         ''')
   elif choice == 'License':
-    LICENSE = GET('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/LICENSE')
+    LICENSE = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/LICENSE')
     st.markdown(f'''## 🔮 **License:**
       
-      {LICENSE}''')
+      {LICENSE.text}''')
   elif choice == 'Found a bug?':
     st.markdown('''
     ## 🐛 Found a bug?
