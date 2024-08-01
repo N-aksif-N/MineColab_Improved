@@ -17,7 +17,7 @@ yaml = YAML()
 
 path = '/content/drive/'
 drive_path = join(path, 'MyDrive/minecraft')
-SERVERCONFIG = join(path, drive_path, 'serverconfig.txt')
+SERVERCONFIG = join(drive_path, 'serverconfig.txt')
 USER = join(path, 'MyDrive/streamlit-app/user.txt')
 if getcwd() != drive_path: chdir(drive_path)
 def COLABCONFIG(server_name):
