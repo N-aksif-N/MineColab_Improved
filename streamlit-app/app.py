@@ -1,8 +1,8 @@
 import streamlit as st
 from json import load
 
-path = ''
-serverconfig = load(open(f'{path}/content/drive/My Drive/minecraft/serverconfig.txt'))
+path = 'content/drive'
+serverconfig = load(open(f'{path}/My Drive/minecraft_server/serverconfig.txt'))
 pg = st.navigation([st.Page("frontends/login.py"), st.Page('frontends/choose_server.py'), st.Page('frontends/main_page.py'), st.Page('frontends/create_page_1.py')], position= 'hidden')
 if 'Starting' not in st.session_state:
   st.session_state['Starting'] = {}
