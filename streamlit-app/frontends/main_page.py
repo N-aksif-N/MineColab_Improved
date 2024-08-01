@@ -1,5 +1,5 @@
 from jproperties import Properties
-from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen
+from backends.settings import Delete_server, LOG, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen, GET
 from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, ERROR, SERVERCONFIG, drive_path, path, USER
 import streamlit as st
 from streamlit_option_menu import option_menu
@@ -14,110 +14,46 @@ user = load(open(USER)); uid = dict(st.context.headers)
 del uid['Sec-Websocket-Key']
 uid = str(uid); user_name = '';
 for user_ in user['user']:
-  if user_ != 'authtoken':
-    if uid in user['user'][user_]['user_id']:
-      user_name = user_
-      break
+  if user_ != 'authtoken': # I use two layers of `if` because there may be someones won't login but will connect directly to main_page
+    if uid in user['user'][user_]['user_id']: user_name = user_; break
 if user_name == '': st.switch_page(st.Page('frontends/login.py'))
 server_name = user['user'][user_name]['server_in_use']
 if server_name == '': st.switch_page(st.Page('frontends/choose_server.py'))
 permission = user['user'][user_name]['permission']
 serverconfig = load(open(SERVERCONFIG))
 colabconfig = COLABCONFIG_LOAD(server_name)
-if permission['owner'] == True:
-  permission = {'console': True, 'software': True, 'log viewing': True, 'world': True, 'server settings': True, 'owner': True}
+if permission['owner'] == True: permission = {'console': True, 'software': True, 'log viewing': True, 'world': True, 'server settings': True, 'owner': True}
   
-@st.fragment
-def SHARE_ACCESS():
-  if permission['owner'] == True:
-    st.header('Share access')
-    dict_ = user['user']
-    for user_ in dict_:
-      if user_ != 'authtoken':
-        with st.expander(f'User: {user_}'):
-          world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False
-          with st.container(border=True):
-            col1, col2, col3 = st.columns(3, vertical_alignment="top")
-            with col1:
-              st.checkbox('Run/stop server', value=user['user'][user_]['permission']['console'], key=f'{user_}console')
-              st.checkbox('Software', value=user['user'][user_]['permission']['software'], key=f'{user_}server_type')
-            with col2:
-              st.checkbox('Log viewing', value=user['user'][user_]['permission']['log viewing'], key=f'{user_}logs')
-              st.checkbox('World', value=user['user'][user_]['permission']['world'], key=f'{user_}worlds')
-            with col3:
-              st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
-              st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
-            tmp, col2 = st.columns([9, 1], vertical_alignment="top")
-            with col2:
-              if st.button('Save', use_container_width=True, key= f'{user_}_save'):
-                if st.session_state[f'{user_}console']: console = True
-                if st.session_state[f'{user_}server_type']: software = True
-                if st.session_state[f'{user_}logs']: log_viewing = True
-                if st.session_state[f'{user_}worlds']: world = True
-                if st.session_state[f'{user_}server_settings']: server_settings = True
-                if st.session_state[f'{user_}administration']: owner = True
-                user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'world': world, 'server settings': server_settings, 'owner': owner}
-                dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-    col1, col2 = st.columns(2, vertical_alignment="bottom")
-    with col1:
-      user_name = st.text_input('User name: ', value='')
-    with col2:
-      if st.button('Create', use_container_width=True):
-        if user_name != '':
-          if user_name in user['user']:
-            ERROR('This username already exists')
-          else:
-            user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
-            dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-            # st.rerun()
-  else:
-    st.warning('You do not have permission to get access to this page.')
-
 @st.fragment
 def SERVER_TYPE_2(server_type, server_version):
   with st.container(border=True):
     st.header(server_type)
     col1, col2 = st.columns([7, 4])
-    with col1:
-      version = st.selectbox('Version: ', tuple(server_version), index=None)
-    with col2:
-      tunnel_service = st.selectbox('Tunnel service ', ('default', 'ngrok', 'argo', 'zrok', 'playit', 'localtonet'), index=None)
+    with col1: version = st.selectbox('Version: ', tuple(server_version), index=None)
+    with col2: tunnel_service = st.selectbox('Tunnel service ', ('default', 'ngrok', 'argo', 'zrok', 'playit', 'localtonet'), index=None)
     change = st.button('Change', use_container_width=True)
-    if change is False or version is None or tunnel_service is None:
-      st.stop()
+    if change is False or version is None or tunnel_service is None: st.stop()
     if tunnel_service == 'default': tunnel_service = colabconfig['tunnel_service']
     SET_SERVERCONFIG(tunnel_service, server_name)
-    sleep(5)
-    Delete_server(server_name, software= True)
-    sleep(15)
-    Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service)
+    sleep(5); Delete_server(server_name, software= True)
+    sleep(15); Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service)
 
-if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
-elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
-elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
-else: choice_1 = ''
-
-st.markdown(
-    """
-    <style>
-        section[data-testid="stSidebar"] {
-            width: 275px !important; # Set the width to your desired value
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
 with st.sidebar:
   st.markdown('<p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>',unsafe_allow_html=True)
-  if choice_1 == '':
-    choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', 'Files', 'Worlds', 'Share acess',"---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill','archive-fill', 'globe', 'bookmark-fill'], menu_icon=None)
-  else:
-    choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Files', 'Worlds', 'Share acess', "---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill', 'git', 'archive-fill', 'globe', 'bookmark-fill'], menu_icon=None)
+  if ONLINE(server_name, status=True) == 'Offline': st.error(ONLINE(server_name, status=True))
+  else: st.success(ONLINE(server_name, status=True))
+    
+  if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
+  elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
+  elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
+  else: choice_1 = ''
+  if choice_1 == '': choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', 'Files', 'Worlds', 'Share acess',"---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill','archive-fill', 'globe', 'bookmark-fill'], menu_icon=None)
+  else: choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Files', 'Worlds', 'Share acess', "---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill', 'git', 'archive-fill', 'globe', 'bookmark-fill'], menu_icon=None)
+  
   col1, col2 = st.columns(2, vertical_alignment='top')
-  with col1:
-    st.link_button("Github", "https://github.com/N-aksif-N/MineColab_Improved", use_container_width=True)
-  with col2:
-    st.link_button("Discord", "https://discord.gg/F9nPJTn7Nu", use_container_width=True)
+  with col1: st.link_button("Github", "https://github.com/N-aksif-N/MineColab_Improved", use_container_width=True)
+  with col2: st.link_button("Discord", "https://discord.gg/F9nPJTn7Nu", use_container_width=True)
 
 if choice == 'Instructions':
 
@@ -126,8 +62,6 @@ if choice == 'Instructions':
     <h1 align="center">Mine Colab [Improved]</h1>
     <p align="center">Run Minecraft Server on Google Colab</p>
     <p align="right">
-      <a target="_blank" href="https://discord.gg/F9nPJTn7Nu"><img src="https://discordapp.com/api/guilds/1214801871827501097/widget.png?style=shield" alt="Discord Minecolab Support"></a>
-      <a target="_blank" href="https://github.com/N-aksif-N/Minecolab"><img src="https://img.shields.io/github/stars/N-aksif-N/Minecolab.svg?style=social&label=Star" alt="Star"></a>
       <a href="https://colab.research.google.com/github/N-aksif-N/MineColab_Improved/blob/free-config/MineColabImproved.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
       <a href="https://github.com/N-aksif-N/MineColab_Improved/releases/download/0.1.3/MinecolabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a>
     </p>
@@ -223,10 +157,10 @@ if choice == 'Instructions':
             - Velocity: Set up a Velocity proxy server.
         ''')
   elif choice == 'License':
-    st.markdown('''
-      ## 🔮 **License:**
-      [![License](https://camo.githubusercontent.com/966484ce4d3faab2d9803e7354431ff8e4fce6a424e97689f05b2f50f4ee424b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f497a7a656c416c697a2f4172636c696768743f7374796c653d666c61742d737175617265)](https://github.com/N-aksif-N)
-    ''')
+    LICENSE = GET('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/LICENSE')
+    st.markdown(f'''## 🔮 **License:**
+      
+      {LICENSE}''')
   elif choice == 'Found a bug?':
     st.markdown('''
     ## 🐛 Found a bug?
@@ -272,18 +206,15 @@ elif choice == 'Server':
     tunnel = colabconfig['tunnel_service']
     with st.container(border= True):
       st.markdown(f'<center>IP:&nbsp;&nbsp;{st.session_state.ip}</center>', unsafe_allow_html= True)
-      st.write('')
       if st.button('Log out', use_container_width=True):
         user['user'][user_name]['server_in_use'] = ''
         dump(user, open(USER, 'w'))
-        sleep(2)
-        st.switch_page(st.Page('frontends/choose_server.py'))
+        sleep(2); st.switch_page(st.Page('frontends/choose_server.py'))
       if st.button('Delete', use_container_width= True):
         Delete_server(server_name)
         user['user'][user_name]['server_in_use'] = ''
         dump(user, open(USER, 'w'))
-        sleep(2)
-        st.switch_page(st.Page('frontends/choose_server.py'))
+        sleep(2); st.switch_page(st.Page('frontends/choose_server.py'))
   with col1:
     software = colabconfig['server_type']; version = colabconfig['server_version'];
     with st.container(border= True):
@@ -319,8 +250,7 @@ elif choice =='Settings':
             server_properties["motd"] = motd
             with open(f"{drive_path}/{server_name}/server.properties", "wb") as f:
                 server_properties.store(f, encoding="utf-8")
-            sleep(1)
-            PROGRESS()
+            sleep(1); PROGRESS()
         with col1:
           if exists(f'{drive_path}/{server_name}/server-icon.png'): file_ = f'{drive_path}/{server_name}/server-icon.png'
           else: file_ = 'https://media.minecraftforum.net/attachments/300/619/636977108000120237.png'
@@ -342,11 +272,9 @@ elif choice =='Settings':
             bytes_data = uploaded_file.getvalue()
             with open(f'{drive_path}/{server_name}/server-icon.png', 'rb') as f:
               f.write(bytes_data)
-            sleep(5)
-            PROGRESS()
+            sleep(5); PROGRESS()
             
-      st.divider()
-      st.subheader('Server properties')
+      st.divider(); st.subheader('Server properties')
       server_properties = Properties() # Download file
       with open(f"{drive_path}/{server_name}/server.properties", "rb") as f:
           server_properties.load(f, 'utf-8')
@@ -365,10 +293,9 @@ elif choice =='Settings':
           Animals = st.checkbox('Animals', value=booleen(server_properties.get('spawn-animals').data))
           Resource_pack_required = st.checkbox('Resource pack required', value=booleen(server_properties.get('require-resource-pack').data))
         with col3:
-          list_ = ["peaceful", "easy", "normal", "hard"]
-          Difficulty = st.selectbox('Difficulty', ("peaceful", "easy", "normal", "hard"), index=list_.index(server_properties.get("difficulty").data))
-          list_ = ["survival", "creative", "adventure", "spectator"]
-          Gamemode = st.selectbox('Gamemode', ("survival", "creative", "adventure", "spectator") , index=list_.index(server_properties.get("gamemode").data))
+          list_1 = ["peaceful", "easy", "normal", "hard"]; list_2 = ["survival", "creative", "adventure", "spectator"]
+          Difficulty = st.selectbox('Difficulty', ("peaceful", "easy", "normal", "hard"), index=list_1.index(server_properties.get("difficulty").data))
+          Gamemode = st.selectbox('Gamemode', ("survival", "creative", "adventure", "spectator") , index=list_2.index(server_properties.get("gamemode").data))
           Villagers = st.checkbox('Villagers', value=booleen(server_properties.get('spawn-npcs').data))
           Nether = st.checkbox('Nether', value=booleen(server_properties.get('allow-nether').data))
           Force_gamemode = st.toggle('Force Gamemode', value=booleen(server_properties.get('force-gamemode').data))
@@ -386,19 +313,17 @@ elif choice == 'Worlds':
   if permission['world'] == True:
     if exists(f'{drive_path}/{server_name}/logs/latest.log') == False: ERROR('Running your minecraft server firsts')
     else:
-      st.header('Worlds ')
       world_ = [i for i in listdir(f'{drive_path}/{server_name}') if 'world' in i]
+      st.header('Worlds ')
       for world in world_:
-        expander = st.expander(f'World: {world}')
-        with expander:
+        with st.expander(f'World: {world}'):
           col1, col2, col3 = st.columns([6, 3.5, 2.5])
           with col2:
             if expander.button('Upload', use_container_width=True, key=f'expander_{world}'):
               seed = expander.text_input('Seed map: ', placeholder='Enter None to set upload file', key=f'expander_{world}_3', value='')
               uploaded_file = expander.file_uploader("Upload", label_visibility='collapsed', key=f'expender_{world}_4')
               if uploaded_file is not None:
-                bytes_data = uploaded_file.getvalue()
-                file_name = uploaded_file.name
+                bytes_data = uploaded_file.getvalue(); file_name = uploaded_file.name
                 MAP(server_name= server_name, seed_map= seed, world_list=world_, world= world, content= bytes_data, file_name = file_name)
           with col3:
             if expander.button('Download', use_container_width=True, key=f'expander_{world}_2'):
@@ -414,7 +339,7 @@ elif choice == 'Log':
       st.header('Server Logs ')
       with open(f'{drive_path}/{server_name}/logs/latest.log', 'r') as f:
         content_ = f.read(); LOG('Try access to https://mclo.gs to see problems and the way to deal with.');
-      content = st_ace(value=content_, readonly=True, language='plain_text', show_gutter=True)
+      st_ace(value=content_, readonly=True, language='plain_text', show_gutter=True)
     else: ERROR("Error: File didn't exists")
   else:
     st.warning('You do not have permission to get access to this page.')
@@ -423,45 +348,71 @@ elif choice == 'Software':
 
   if permission['software'] == True:
     SERVERJAR_ = ['vanilla', 'purpur', 'fabric', 'arclight', 'snapshot', 'paper', 'forge', 'mohist', 'velocity', 'banner']
-    button_list = []
+    button_list = []; placeholder = st.empty()
     st.header('Software')
-    placeholder = st.empty()
     with placeholder.container(border=True):
       col1, col2, col3 = st.columns(3, vertical_alignment='top')
       with col1:
-        for i in (0, 1, 2, 3):
-          server_type = SERVERJAR_[i]
-          button = st.button(f':green[{server_type}]', use_container_width= True)
-          button_list.append(button)
+        for i in (0, 1, 2, 3): server_type = SERVERJAR_[i]; button = st.button(f':green[{server_type}]', use_container_width= True); button_list.append(button)
       with col2:
-        for i in (4, 5, 6, 7):
-          server_type = SERVERJAR_[i]
-          button = st.button(f':green[{server_type}]', use_container_width= True)
-          button_list.append(button)
+        for i in (4, 5, 6, 7): server_type = SERVERJAR_[i]; button = st.button(f':green[{server_type}]', use_container_width= True); button_list.append(button)
       with col3:
-        st.button('', use_container_width=True, disabled=True, key= 'ex_1')
-        server_type = SERVERJAR_[8]
-        button = st.button(f':green[{server_type}]', use_container_width= True)
-        button_list.append(button)
+        st.button('', use_container_width=True, disabled=True, key= 'ex_1'); 
+        server_type = SERVERJAR_[8]; button = st.button(f':green[{server_type}]', use_container_width= True); button_list.append(button)
         st.button('', use_container_width=True, disabled=True, key= 'ex_2')
-        server_type = SERVERJAR_[9]
-        button = st.button(f':green[{server_type}]', use_container_width= True)
-        button_list.append(button)
+        server_type = SERVERJAR_[9]; button = st.button(f':green[{server_type}]', use_container_width= True); button_list.append(button)
     server_type = ''; server_version = []
     for button in button_list:
       if button:
         server_version = SERVERSJAR(server_type= SERVERJAR_[button_list.index(button)], version='', all = True)
         server_type = SERVERJAR_[button_list.index(button)]
-        sleep(1)
-        placeholder.empty()
-        sleep(1)
-        SERVER_TYPE_2(server_type, server_version)
+        sleep(1); placeholder.empty(); sleep(1); SERVER_TYPE_2(server_type, server_version)
   else:
     st.warning('You do not have permission to get access to this page.')
 
 elif choice == 'Share acess':
-
-  SHARE_ACCESS()
-
-else:
-  st.write('Are comming')
+  if permission['owner'] == True:
+    st.header('Share access')
+    dict_ = user['user']
+    for user_ in dict_:
+      if user_ != 'authtoken':
+        with st.expander(f'User: {user_}'):
+          world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False
+          with st.container(border=True):
+            col1, col2, col3 = st.columns(3, vertical_alignment="top")
+            with col1:
+              st.checkbox('Run/stop server', value=user['user'][user_]['permission']['console'], key=f'{user_}console')
+              st.checkbox('Software', value=user['user'][user_]['permission']['software'], key=f'{user_}server_type')
+            with col2:
+              st.checkbox('Log viewing', value=user['user'][user_]['permission']['log viewing'], key=f'{user_}logs')
+              st.checkbox('World', value=user['user'][user_]['permission']['world'], key=f'{user_}worlds')
+            with col3:
+              st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
+              st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
+            tmp, col2 = st.columns([9, 1], vertical_alignment="top")
+            with col2:
+              if st.button('Save', use_container_width=True, key= f'{user_}_save'):
+                if st.session_state[f'{user_}console']: console = True
+                if st.session_state[f'{user_}server_type']: software = True
+                if st.session_state[f'{user_}logs']: log_viewing = True
+                if st.session_state[f'{user_}worlds']: world = True
+                if st.session_state[f'{user_}server_settings']: server_settings = True
+                if st.session_state[f'{user_}administration']: owner = True
+                user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'world': world, 'server settings': server_settings, 'owner': owner}
+                dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+    col1, col2 = st.columns(2, vertical_alignment="bottom")
+    with col1:
+      user_name = st.text_input('User name: ', value='')
+    with col2:
+      if st.button('Create', use_container_width=True):
+        if user_name != '':
+          if user_name in user['user']:
+            ERROR('This username already exists')
+          else:
+            user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
+            dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+            # st.rerun()
+  else:
+    st.warning('You do not have permission to get access to this page.')
+    
+else: st.write('Are comming')
