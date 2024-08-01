@@ -1,8 +1,8 @@
 from shutil import rmtree
 from os.path import exists, join
-from os import makedirs, chdir
+from os import makedirs
 from time import sleep
-from json import load, dump
+from json import dump
 from requests import get
 
 path = '/content/drive'
