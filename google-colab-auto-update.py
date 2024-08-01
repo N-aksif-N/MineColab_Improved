@@ -5,7 +5,7 @@ from time import sleep
 from json import dump
 from requests import get
 
-path = '/content/drive'
+path = 'content/drive'
 drive_path = join(path, 'MyDrive/minecraft_server')
 
 r = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/update.txt')
@@ -24,7 +24,7 @@ if 'update=True' in r.text or exists(join(path, 'MyDrive/streamlit-app')) == Fal
   makedirs(join(path, 'MyDrive/streamlit-app/frontends'))
   sleep(10)
   for key in dict:
-    with open(f'MyDrive/streamlit-app/{key}', 'w') as f:
+    with open(f'{path}/MyDrive/streamlit-app/{key}', 'w') as f:
       r = get(dict[key])
       f.write(r.text)
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
