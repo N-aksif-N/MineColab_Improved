@@ -15,10 +15,10 @@ from streamlit_ace import st_ace
 yaml = YAML()
 #------------------------------------------------------------------------------------------------------------------------------------#
 
-path = '/'
-drive_path = join(path, 'content/drive/MyDrive/minecraft')
+path = '/content/drive/'
+drive_path = join(path, 'MyDrive/minecraft')
 SERVERCONFIG = join(path, drive_path, 'serverconfig.txt')
-USER = join(path, 'content/drive/MyDrive/streamlit-app/user.txt')
+USER = join(path, 'MyDrive/streamlit-app/user.txt')
 if getcwd() != drive_path: chdir(drive_path)
 def COLABCONFIG(server_name):
   return f"{drive_path}/{server_name}/colabconfig.txt"
