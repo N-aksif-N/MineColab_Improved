@@ -306,8 +306,7 @@ elif choice =='Settings':
           Resource_pack_prompt = st.text_input('Resource pack prompt: ', value=server_properties.get('resource-pack-prompt').data)
         with col2:
           if st.button('Save', use_container_width=True): Server_Properties(server_properties, server_name, Slots, Gamemode, Difficulty, Cracked, PVP, Command_block, Fly, Villagers, Animals, Monsters, Whitelist, Nether, Force_gamemode, Spawn_protection, Resource_pack_required, Resource_pack, Resource_pack_prompt)
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  else: st.warning('You do not have permission to get access to this page.')
 
 elif choice == 'Worlds':
 
@@ -330,8 +329,7 @@ elif choice == 'Worlds':
             if expander.button('Download', use_container_width=True, key=f'expander_{world}_2'):
               server_backup = expander.text_input('Server backup: ', placeholder='Enter None to set default backup', key=f'expander_{world}_5', value='')
               if server_backup != '': Backup(server_name= server_name, file_name=world, server_backup= server_backup)
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  else: st.warning('You do not have permission to get access to this page.')
 
 elif choice == 'Log':
 
@@ -342,8 +340,7 @@ elif choice == 'Log':
         content_ = f.read(); LOG('Try access to https://mclo.gs to see problems and the way to deal with.');
       st_ace(value=content_, readonly=True, language='plain_text', show_gutter=True)
     else: ERROR("Error: File didn't exists")
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  else: st.warning('You do not have permission to get access to this page.')
 
 elif choice == 'Software':
 
@@ -368,8 +365,7 @@ elif choice == 'Software':
         server_version = SERVERSJAR(server_type= SERVERJAR_[button_list.index(button)], version='', all = True)
         server_type = SERVERJAR_[button_list.index(button)]
         sleep(1); placeholder.empty(); sleep(1); SERVER_TYPE_2(server_type, server_version)
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  else: st.warning('You do not have permission to get access to this page.')
 
 elif choice == 'Share acess':
   if permission['owner'] == True:
@@ -407,13 +403,10 @@ elif choice == 'Share acess':
     with col2:
       if st.button('Create', use_container_width=True):
         if user_name != '':
-          if user_name in user['user']:
-            ERROR('This username already exists')
+          if user_name in user['user']: ERROR('This username already exists')
           else:
             user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
             dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
-            # st.rerun()
-  else:
-    st.warning('You do not have permission to get access to this page.')
+  else: st.warning('You do not have permission to get access to this page.')
     
 else: st.write('Are comming')
