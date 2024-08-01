@@ -3,6 +3,7 @@ from os.path import exists, join
 from os import makedirs, chdir
 from time import sleep
 from json import load, dump
+from requests import get
 
 path = '/content/drive'
 drive_path = join(path, 'MyDrive/minecraft_server')
