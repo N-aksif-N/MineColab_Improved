@@ -35,7 +35,7 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
     print('Lol')
     makedirs(drive_path)
     makedirs(f'{drive_path}/logs')
-  if exists(f'{path}/{drive_path}/serverconfig.txt')) == False:
+  if exists(f'{path}/{drive_path}/serverconfig.txt') == False:
     print('...')
     dump({"server_list": [], "ngrok_proxy" : {"authtoken" : '', "region" : ''}, "zrok_proxy": {"authtoken": ''}, "localtonet_proxy": {"authtoken": ''}}, open(drive_path + '/serverconfig.txt', 'w'))
 sleep(20)
