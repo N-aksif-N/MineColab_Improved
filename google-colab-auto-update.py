@@ -30,7 +30,7 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
   # Creating minecraft_server folder
   sleep(10)
-  if exists(drive_path) == False
+  if exists(drive_path) == False:
     makedirs(drive_path)
     makedirs(f'{drive_path}/logs')
   if exists(f'{drive_path}/serverconfig.txt') == False:
