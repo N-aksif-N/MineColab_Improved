@@ -1,6 +1,6 @@
 from jproperties import Properties
 from backends.settings import Delete_server, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen, LOGS, GITHUB_GUIDE
-from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, ERROR, SERVERCONFIG, drive_path, path, USER, LOG
+from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, SERVERCONFIG, drive_path, path, USER, ERROR, LOG
 import streamlit as st
 from streamlit_option_menu import option_menu
 from streamlit_ace import st_ace
@@ -9,6 +9,7 @@ from os.path import exists
 from time import sleep
 from os import listdir
 from json import load, dump
+from datetime import datetime
 
 user = load(open(USER)); uid = dict(st.context.headers)
 del uid['Sec-Websocket-Key']
@@ -22,48 +23,65 @@ if server_name == '': st.switch_page(st.Page('frontends/choose_server.py'))
 permission = user['user'][user_name]['permission']
 serverconfig = load(open(SERVERCONFIG))
 colabconfig = COLABCONFIG_LOAD(server_name)
-if permission['owner'] == True: permission = {'console': True, 'software': True, 'log viewing': True, 'world': True, 'server settings': True, 'owner': True}
+if permission['owner'] == True: permission = {'console': True, 'software': True, 'log viewing': True, 'players': False, 'plugins/mods': True, 'world': True, 'server settings': True, 'owner': True}
 
 @st.fragment
 def PLAYER_2(name):
   version = colabconfig['server_version']
-  if name == 'Whitelist': pass
+  if name == 'Whitelist': name = 'whitelist.json'
   elif name == 'OPs': 
-    if version <= '1.7.8': 
-      name = 'ops.txt'
-    else: name = 'ops.json'; 
-  st.header(name)
-  col1, col2 = st.columns(2, vertical_alignment="bottom")
-  with col1:
-    player_name = st.text_input('User name: ', value='')
-  with col2:
-    if st.button('Create', use_container_width=True):
-      if player_name != '':
-        
-        # OPs  
-        if name == 'ops.txt':
-          with open(f'{drive_path}/{server_name}/{name}', 'w') as f:
-            f.write(player_name)
-        elif name == 'ops.json': 
-          rJSON = GET(f'https://playerdb.co/api/player/minecraft/{player_name}').json()
-          if rJSON['code'] == 'player.found':
-            id = rJSON['data']['player']['id']
-            if exists(f'{drive_path}/{server_name}/{name}'):
-              content = load(f'{drive_path}/{server_name}/{name}')
-              conent.append({"uuid": id, "name": player_name, "level": '4'})
-            else:
-              content = [{"uuid": id, "name": player_name, "level": '4'}]
-            dump(content, opem(f'{drive_path}/{server_name}/{name}', 'w'))  
-          else: ERROR('Player not found.')
-  if name == 'ops.txt':
-    LOG("We're in developing this. Wait for it")
-  elif name == 'ops.json':
-    content = load(f'{drive_path}/{server_name}/{name}')
-    for player in content:
-      with st.container(border=True):
-        if st.button('🗑️'):
-          LOG('Deleting player...')
-          #@####
+    if version <= '1.7.8': name = 'ops.txt'
+    else: name = 'ops.json'
+  elif name == 'Banned players': name = 'banned-players.json'
+  else: name = 'banned-ips.json'
+  if exists(f'{drive_path}/{server_name}/{name}'):
+    st.header(name)
+    col1, col2 = st.columns(2, vertical_alignment="bottom")
+    with col1: player_name = st.text_input('User name: ', value='')
+    with col2:
+      if st.button('Create', use_container_width=True):
+        if player_name != '':
+          if name == 'ops.txt':
+            with open(f'{drive_path}/{server_name}/{name}', 'w') as f:
+              f.write(player_name)
+          elif name == 'ops.json' or name == 'whitelist.json': 
+            rJSON = GET(f'https://playerdb.co/api/player/minecraft/{player_name}').json()
+            if rJSON['code'] == 'player.found':
+              id = rJSON['data']['player']['id']
+              try:
+                content = load(f'{drive_path}/{server_name}/{name}')
+                if name == 'ops.json': conent.append({"uuid": id, "name": player_name, "level": '4'})
+                elif name == 'whitelist.json': content.append({"uuid": id, "name": player_name})
+                else:
+                  now = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+                  content.append({"uuid": id, "name": player_name, "created": f"{now} +0100", "source": "Console", "expires": "forever", "reason": "Set in the minecolab website"})
+              except:
+                if name == 'ops.json': content = [{"uuid": id, "name": player_name, "level": '4'}]
+                elif name == 'whitelist.json': content = [{"uuid": id, "name": player_name}]
+                else: 
+                  now = datetime.now().strftime("%d-%m-%Y %H:%M:%S") # +0100 is the default 
+                  content = [{"uuid": id, "name": player_name, "created": f"{now} +0100", "source": "Console", "expires": "forever", "reason": "Set in the minecolab website"}] 
+              dump(content, opem(f'{drive_path}/{server_name}/{name}', 'w'))  
+            else: ERROR('Player not found.')
+    
+    if name == 'ops.txt':
+      LOG("We're in developing this. Wait for it")
+    elif name == 'ops.json' or name == 'whitelist.json' or name == 'banned-players.json':
+      try:
+        content = load(f'{drive_path}/{server_name}/{name}')
+        for player in content:
+          with st.container(border=True):
+            col1, col2 = st.columns([12, 1], vertical_alignments='top')
+            with col1: st.write(player['name'])
+            with col2:
+              if st.button('🗑️', use_container_width=True, key = f'{player}_delete_btn'):
+                LOG('Deleting player...'); content.remove(player)
+                dump(content, open(f'{drive_path}/{server_name}/{name}', 'w'))
+      except: pass
+    else:      
+      LOG("We're in developing this function.")
+  else: ERROR("You didn't run the server .")
+
 @st.fragment
 def SERVER_TYPE_2(server_type, server_version):
   with st.container(border=True):
@@ -261,9 +279,9 @@ def main()
   
   elif choice == 'Log':
   
-    content_ = LOGS(server_name)
     if permission['log viewing'] == True:
       if exists(f'{drive_path}/{server_name}/logs/latest.log'):
+        content_ = LOGS(server_name)
         st.header('Server Logs ')
         st_ace(value=content_, readonly=True, language='plain_text', show_gutter=True)
       else: ERROR("Error: File didn't exists")
@@ -312,42 +330,53 @@ def main()
       for user_ in dict_:
         if user_ != 'authtoken':
           with st.expander(f'User: {user_}'):
-            world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False
+            world = False; server_settings = False; log_viewing = False; software = False; owner = False; console = False; players = False; plugins_mods= False
             with st.container(border=True):
-              col1, col2, col3 = st.columns(3, vertical_alignment="top")
+              col1, col2, col3 = st.columns(3, vertical_alignment="bottom")
               with col1:
                 st.checkbox('Run/stop server', value=user['user'][user_]['permission']['console'], key=f'{user_}console')
                 st.checkbox('Software', value=user['user'][user_]['permission']['software'], key=f'{user_}server_type')
+                st.checkbox('Player Management', value=user['user'][user_]['permission']['players'], key=f'{user_}players')
               with col2:
                 st.checkbox('Log viewing', value=user['user'][user_]['permission']['log viewing'], key=f'{user_}logs')
                 st.checkbox('World', value=user['user'][user_]['permission']['world'], key=f'{user_}worlds')
+                st.checkbox('Install plugins/mods', value=user['user'][user_]['permission']['plugins/mods'], key=f'{user_}plugins/mods')
               with col3:
                 st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
                 st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
-              tmp, col2 = st.columns([9, 1], vertical_alignment="top")
+              tmp, col1, col2 = st.columns([9, 1, 1], vertical_alignment="top")
               with col2:
                 if st.button('Save', use_container_width=True, key= f'{user_}_save'):
                   if st.session_state[f'{user_}console']: console = True
                   if st.session_state[f'{user_}server_type']: software = True
                   if st.session_state[f'{user_}logs']: log_viewing = True
+                  if st.session_state[f'{user_}players']: players = True
+                  if st.session_state[f'{user_}plugins/mods']: plugins_mods = True
                   if st.session_state[f'{user_}worlds']: world = True
                   if st.session_state[f'{user_}server_settings']: server_settings = True
                   if st.session_state[f'{user_}administration']: owner = True
-                  user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'world': world, 'server settings': server_settings, 'owner': owner}
+                  user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'players': players, 'plugins/mods': plugins_mods, 'world': world, 'server settings': server_settings, 'owner': owner}
+                  dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+              with col1:
+                if st.button('Remove', use_container_width=True, key= f'{user_}_remove'):
+                  del user['user'][user_]
                   dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
     else: st.warning('You do not have permission to get access to this page.')
       
   elif choice == 'Player':
-    button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
-    col1, col2, col3, col4 = st.columns(4, vertical_alignments= 'bottom')
-    with col1: st.button(button_list[0], use_container_width=True, key= button_list[0])
-    with col2: st.button(button_list[1], use_container_width=True, key= button_list[1])
-    with col3: st.button(button_list[2], use_container_width=True, key= button_list[2])
-    with col4: st.button(button_list[3], use_container_width=True, key= button_list[3])
-      
-    for button in button_list:
-      if st.session_state[button_list[button]]:
-        PLAYER_2(name)
+    
+    if permission['players'‎]:
+      button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
+      col1, col2, col3, col4 = st.columns(4, vertical_alignments= 'bottom')
+      with col1: st.button(button_list[0], use_container_width=True, key= button_list[0])
+      with col2: st.button(button_list[1], use_container_width=True, key= button_list[1])
+      with col3: st.button(button_list[2], use_container_width=True, key= button_list[2])
+      with col4: st.button(button_list[3], use_container_width=True, key= button_list[3])
+        
+      for button in button_list:
+        if st.session_state[button_list[button]]:
+          PLAYER_2(name)
+    else: st.warning('You do not have permission to get access to this page.')
         
   else: st.write('Are comming')
     
