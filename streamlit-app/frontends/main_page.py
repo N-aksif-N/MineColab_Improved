@@ -365,7 +365,7 @@ def main()
       
   elif choice == 'Player':
     
-    if permission['players'‎]:
+    if permission['players'‎] == True:
       
       button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
       col1, col2, col3, col4 = st.columns(4, vertical_alignments= 'bottom')
