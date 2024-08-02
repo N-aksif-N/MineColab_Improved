@@ -102,9 +102,7 @@ def MKDIR(path: str):
 
   if exists(path): pass
   else:
-    try:
-      LOG(f'Creating {path}')
-      makedirs(path, exist_ok = True)
+    try: makedirs(path, exist_ok = True)
     except: ERROR(f'Can not creating {path}')
 
 @st.cache_data
