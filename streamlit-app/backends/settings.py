@@ -38,9 +38,9 @@ def COLABCONFIG_LOAD(server_name) -> dict:
     
 def starting(server_name):
   if st.session_state.Starting[server_name][1] == True:
-    st.session_state.Starting[server_name] = ['Start', False]
+    st.session_state.Starting[server_name] = ['▶ Start', False]
   else:
-    st.session_state.Starting[server_name] = ['Stop', True]
+    st.session_state.Starting[server_name] = ['🛑 Stop', True]
     
 @st.cache_data
 def booleen(str):
