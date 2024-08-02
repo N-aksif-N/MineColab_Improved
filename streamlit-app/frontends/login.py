@@ -27,7 +27,7 @@ if st.session_state[f'{text}_btn'] is True and st.session_state['user_name'] != 
     authtoken = ''.join(choices(ascii_letters, k=20))
     st.write(f'Your owner authtoken: {authtoken}')
     user['user']['authtoken'] = authtoken
-    user['user'][st.session_state['user_name']] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [uid], 'server_in_use': ''}
+    user['user'][st.session_state['user_name']] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'players': False, 'plugins/mods': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [uid], 'server_in_use': ''}
     dump(user, open(USER, 'w'))
     sleep(3)
     st.switch_page(st.Page('frontends/choose_server.py'))
