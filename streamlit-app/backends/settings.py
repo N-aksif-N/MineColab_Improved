@@ -42,6 +42,7 @@ def starting(server_name):
   else:
     st.session_state.Starting[server_name] = ['Stop', True]
     
+@st.cache_data
 def booleen(str):
   if str == 'true':
     return True
