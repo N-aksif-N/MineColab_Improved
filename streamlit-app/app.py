@@ -7,8 +7,10 @@ pg = st.navigation([st.Page("frontends/login.py"), st.Page('frontends/choose_ser
 if 'Starting' not in st.session_state:
   st.session_state['Starting'] = {}
   for server in serverconfig['server_list']:
-    st.session_state['Starting'][server] = ['Start', False]
+    st.session_state['Starting'][server] = ['▶ Start', False]  
 if 'ip' not in st.session_state:
-  st.session_state['ip'] = '___ Run Your Server ___'
+  st.session_state['ip'] = {}
+  for server in serverconfig['server_list']:
+    st.session_state['ip'][server] = '___ Run Your Server ___'
 st.set_page_config(page_title='Minecolab', page_icon="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png", layout='wide')
 pg.run()
