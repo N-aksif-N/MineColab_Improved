@@ -78,6 +78,29 @@ def ERROR(*args, icon = '🚨'):
   args_[0] = '[ :red[ERROR] ] ' + args_[0]
   for i in args_: st.toast(i, icon = icon)
 
+def BUTTON(*args, key=None, **kwargs):
+    """
+    Works just like a normal streamlit button, but it remembers its state, so that
+    it works as a toggle button. If you click it, it will be pressed, and if you click
+    it again, it will be unpressed. Args and output are the same as for
+    [st.button](https://docs.streamlit.io/library/api-reference/widgets/st.button)
+    """
+
+    if key is None:
+        raise ValueError("Must pass key")
+
+    if key not in st.session_state:
+        st.session_state[key] = False
+
+    if "type" not in kwargs:
+        kwargs["type"] = "primary" if st.session_state[key] else "secondary"
+
+    if st.button(*args, **kwargs):
+        st.session_state[key] = not st.session_state[key]
+        rerun()
+
+    return st.session_state[key]
+
 def MKDIR(path: str):
 
   ''' Creating a directory with the given path
