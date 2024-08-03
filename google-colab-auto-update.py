@@ -15,7 +15,7 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
     rmtree(path + '/MyDrive/streamlit-app')
     sleep(5)
   r = get('https://github.com/N-aksif-N/MineColab_Improved/archive/refs/heads/app.zip')
-  with open('/content/app.zip', 'w') as f:
+  with open('/content/app.zip', 'wb') as f:
     f.write(r.content)
   with ZipFile(path_to_zip_file, 'r') as zip_ref:
     zip_ref.extract('streamlit-app', path=f'{path}/MyDrive')
