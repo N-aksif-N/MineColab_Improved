@@ -71,7 +71,7 @@ def PLAYER_2(name):
         content = load(f'{drive_path}/{server_name}/{name}')
         for player in content:
           with st.container(border=True):
-            col1, col2 = st.columns([12, 1], vertical_alignments='top')
+            col1, col2 = st.columns([12, 1], vertical_alignment='top')
             with col1: st.write(player['name'])
             with col2:
               if st.button('🗑️', use_container_width=True, key = f'{player}_delete_btn'):
@@ -366,7 +366,7 @@ def main():
       
     if permission['players'] == True:
       button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
-      col1, col2, col3, col4 = st.columns(4, vertical_alignments= 'bottom')
+      col1, col2, col3, col4 = st.columns(4, vertical_alignment= 'bottom')
       with col1: st.button(button_list[0], use_container_width=True, key= button_list[0])
       with col2: st.button(button_list[1], use_container_width=True, key= button_list[1])
       with col3: st.button(button_list[2], use_container_width=True, key= button_list[2])
