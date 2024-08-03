@@ -18,7 +18,9 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   with open('/content/app.zip', 'wb') as f:
     f.write(r.content)
   with ZipFile('/content/app.zip', 'r') as zip_ref:
-    zip_ref.extract('streamlit-app', path=f'{path}/MyDrive')
+    name = zip_ref.namelist()[0]
+    zip_ref.extract(f'{name}/streamlit-app', path=f'/content')
+    ####
   sleep(10)
   remove('/content/app.zip')
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
