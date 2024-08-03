@@ -20,9 +20,10 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   with ZipFile('/content/app.zip', 'r') as zip_ref:
     name = zip_ref.namelist()[0]
     zip_ref.extract(f'{name}/streamlit-app', path=f'/content')
-  move(f'/content/{name}/streamlit-app', f'/content/drive/MyDrive')
+  move(f'/content/{name}/streamlit-app', f'{path}/MyDrive')
   sleep(10)
   remove('/content/app.zip')
+  sleep(5)
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
   # Creating minecraft_server folder
   sleep(10)
