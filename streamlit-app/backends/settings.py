@@ -282,7 +282,7 @@ def Install_server(server_name, server_type, version, tunnel_service):
   DOWNLOAD_FILE(content='', url= SERVERSJAR(server_type, version, jar = True), path = f"{drive_path}/{server_name}", file_name= jarname)
   sleep(10)
 
-def Delete_server(server_name, software= False):
+def Delete_server(server_name, software= False, reserve=[]):
   LOG(f'Found server {server_name}')
   sleep(10)
   # Remove the folder name in server config txt files
@@ -293,8 +293,9 @@ def Delete_server(server_name, software= False):
   sleep(10)
   # Delete folder without noticable
   if software:
-    drive_dir = listdir(f'{drive_path}/{server_name}')
-    if exists(f'{drive_path}/{server_name}/tunnels'): drive_dir.remove('tunnels')
+    drive_dir = listdir(f'{drive_path}/{server_name}'); reserve.append('tunnels')
+    for i in reserve:
+      if exists(f'{drive_path}/{server_name}/{i}'): drive_dir.remove(i)
     for i in drive_dir:
       if isdir(f'{drive_path}/{server_name}/{i}'):
         rmtree(f'{drive_path}/{server_name}/{i}')
@@ -418,13 +419,15 @@ def LOGS(server_name: str):
 def GITHUB_GUIDE(choice):
   text = ''
   if choice == 'What is Mine Colab [Improved]':
-    text = ''' # :hear_no_evil:  First of all, what is Mine Colab [Improved]?
+    text = ''' 
+    # :hear_no_evil:  First of all, what is Mine Colab [Improved]?
 
-      Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the [GNU License](https://github.com/N-aksif-N/Minecolab/blob/master/LICENSE). Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)'''
+    Mine Colab [Improved] is an alternative [Minecolab project](https://github.com/thecoder-001/MineColab) that helps to build a Minecraft server on your own Gdrive. It is easier to use and more flexible to edit. This project is suited for mainly [google colab](https://colab.research.google.com) (a free service based on [jupyter notebook](https://jupyter.org/) and [ubuntu](https://ubuntu.com) os), though this can be applied on other projects like [jupyter lab](https://jupyter.org/try-jupyter/lab/), [deepnote](https://deepnote.com/), etc. This project followed the [GNU License](https://github.com/N-aksif-N/Minecolab/blob/master/LICENSE). Before looking closer, please make sure to see [the original](https://github.com/thecoder-001/MineColab)'''
   elif choice == 'Can Minecolab server online 24/7 ?':
-    text = ''' # :moneybag:  Can Minecolab server online 24/7?
+    text = ''' 
+    # :moneybag:  Can Minecolab server online 24/7?
 
-      Of course, it's possible but with a little hard work. Google Colab is a free service and it is not suited for 24/7 online so you can use [deepnote](https://deepnote.com/) instead. Or if you still want to use google collab you may need some tricks or friends to make the web online and accept the captcha manually.'''
+    Of course, it's possible but with a little hard work. Google Colab is a free service and it is not suited for 24/7 online so you can use [deepnote](https://deepnote.com/) instead. Or if you still want to use google collab you may need some tricks or friends to make the web online and accept the captcha manually.'''
   elif choice == 'Instructions':
     text = ''' # :page_with_curl: Instructions
       - Open the notebook in Google Colab.
@@ -498,7 +501,7 @@ def GITHUB_GUIDE(choice):
             - Banner: Deploy a Banner server.
             - Velocity: Set up a Velocity proxy server.'''
   elif choice == 'License':
-    LICENSE = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/LICENSE')
+    LICENSE = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/master/LICENSE')
     text = f'''## 🔮 **License:**
       
       {LICENSE.text}'''
