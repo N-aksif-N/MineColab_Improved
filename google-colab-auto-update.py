@@ -22,6 +22,7 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   move('/content/MineColab_Improved-app/streamlit-app', f'{path}/MyDrive')
   sleep(10)
   remove('/content/app.zip')
+  rmtree('/content/MineColab_Improved-app')
   sleep(5)
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
   # Creating minecraft_server folder
