@@ -364,9 +364,8 @@ def main()
     else: st.warning('You do not have permission to get access to this page.')
       
   elif choice == 'Player':
-    
-    if permission['players'‎] == True:
       
+    if permission['players'] == True:
       button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
       col1, col2, col3, col4 = st.columns(4, vertical_alignments= 'bottom')
       with col1: st.button(button_list[0], use_container_width=True, key= button_list[0])
