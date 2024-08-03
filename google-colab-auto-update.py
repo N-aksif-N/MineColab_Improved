@@ -9,7 +9,7 @@ from zipfile import ZipFile
 path = '/content/drive'
 drive_path = path + '/MyDrive/minecraft_server'
 
-r = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/update.txt')
+r = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/update.txt')
 if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   if exists(path + '/MyDrive/streamlit-app'):
     rmtree(path + '/MyDrive/streamlit-app')
