@@ -96,6 +96,7 @@ def SERVER_TYPE_2(server_type, server_version):
     sleep(5); Delete_server(server_name, software= True)
     sleep(15); Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service)
 
+@st.fragment
 def main():
   st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
   with st.sidebar:
@@ -380,5 +381,4 @@ def main():
         
   else: st.write('Are comming')
     
-if __name__ == "__main__":
-  main()
+main()
