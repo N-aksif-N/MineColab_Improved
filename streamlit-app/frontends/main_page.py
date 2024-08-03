@@ -107,12 +107,8 @@ def main():
     elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
     elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
     else: choice_1 = ''
-    if choice_1 == '': 
-      choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', 'Player', 'Worlds', 'Acess',"---", 'Instructions'],  
-                           iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Manage Accounts', 'Public', 'Groups'], menu_icon=None)
-    else: 
-      choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Player', 'Worlds', 'Acess', "---", 'Instructions'],  
-                           iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Extension', 'Manage Accounts', 'Public', 'Groups'], menu_icon=None)
+    if choice_1 == '': choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', 'Player', 'Worlds', 'Acess',"---", 'Instructions'], iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Manage Accounts', 'Public', 'Groups'], default_choice=0)
+    else: choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Player', 'Worlds', 'Acess', "---", 'Instructions'], iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Extension', 'Manage Accounts', 'Public', 'Groups'], default_choice=0)
     
     col1, col2 = st.columns(2, vertical_alignment='top')
     with col1: st.link_button("Github", "https://github.com/N-aksif-N/MineColab_Improved", use_container_width=True)
