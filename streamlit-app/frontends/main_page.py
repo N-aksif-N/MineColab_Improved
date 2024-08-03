@@ -154,7 +154,7 @@ def main():
       tunnel = colabconfig['tunnel_service']
       with st.container(border= True):
         ip = st.session_state.ip[server_name]
-        st.markdown(f'<center>IP:&nbsp;&nbsp;{ip}</center>', unsafe_allow_html= True)
+        st.markdown(f'<center>IP:&nbsp;&nbsp;{ip}</center><br>', unsafe_allow_html= True)
         if st.button('Log out', use_container_width=True):
           user['user'][user_name]['server_in_use'] = ''
           dump(user, open(USER, 'w'))
