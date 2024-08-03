@@ -97,7 +97,7 @@ def SERVER_TYPE_2(server_type, server_version):
     sleep(15); Install_server(server_name = server_name, server_type  = server_type , version = version, tunnel_service = tunnel_service)
 
 def main():
-  st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
+  #st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
   with st.sidebar:
     st.markdown('<p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>',unsafe_allow_html=True)
     if ONLINE(server_name, status=True) == 'Offline': st.error(ONLINE(server_name, status=True))
