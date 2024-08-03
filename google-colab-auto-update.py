@@ -1,6 +1,6 @@
 from shutil import rmtree
 from os.path import exists
-from os import makedirs
+from os import makedirs, remove
 from time import sleep
 from json import dump
 from requests import get
