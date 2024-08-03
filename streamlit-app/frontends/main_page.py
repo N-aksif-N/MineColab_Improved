@@ -396,8 +396,7 @@ def main():
       with col4: st.button(button_list[3], use_container_width=True, key= button_list[3])
         
       for button_name in button_list:
-        if st.session_state[button_name]:
-          PLAYER_2(name)
+        if st.session_state[button_name]: PLAYER_2(button_name)
     else: st.warning('You do not have permission to get access to this page.')
         
   else: st.write('Are comming')
