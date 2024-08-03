@@ -2,7 +2,7 @@ from jproperties import Properties
 from backends.settings import Delete_server, Backup, Server_Properties, MAP, Install_server, SERVERSJAR, SET_SERVERCONFIG, booleen, LOGS, GITHUB_GUIDE
 from backends.settings import ONLINE, COLABCONFIG_LOAD, PROGRESS, starting, SERVERCONFIG, drive_path, path, USER, ERROR, LOG
 import streamlit as st
-from streamlit_option_menu import option_menu
+from st_on_hover_tabs import on_hover_tabs
 from streamlit_ace import st_ace
 from jproperties import Properties
 from os.path import exists
@@ -107,8 +107,12 @@ def main():
     elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
     elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
     else: choice_1 = ''
-    if choice_1 == '': choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', 'Player', 'Worlds', 'Acess',"---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill','person-fill', 'globe', 'person-add'], menu_icon=None)
-    else: choice = option_menu("Minecolab", ["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Player', 'Worlds', 'Acess', "---", 'Instructions'],  icons=['amd', 'caret-right-fill', 'newspaper', 'gear', 'cloud-arrow-up-fill', 'git', 'person-fill', 'globe', 'person-add'], menu_icon=None)
+    if choice_1 == '': 
+      choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', 'Player', 'Worlds', 'Acess',"---", 'Instructions'],  
+                           iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Manage Accounts', 'Public', 'Groups'], menu_icon=None)
+    else: 
+      choice = on_hover_tabs(tabName=["Server", 'Console', "Log", 'Settings', 'Software', choice_1 ,'Player', 'Worlds', 'Acess', "---", 'Instructions'],  
+                           iconName=['Token', 'Code Blocks', 'Newspaper', 'Settings', 'Memory', 'Extension', 'Manage Accounts', 'Public', 'Groups'], menu_icon=None)
     
     col1, col2 = st.columns(2, vertical_alignment='top')
     with col1: st.link_button("Github", "https://github.com/N-aksif-N/MineColab_Improved", use_container_width=True)
@@ -373,7 +377,7 @@ def main():
       with col4: st.button(button_list[3], use_container_width=True, key= button_list[3])
         
       for button in button_list:
-        if st.session_state[button_list[button]]:
+        if st.session_state[button_list.index(button)]:
           PLAYER_2(name)
     else: st.warning('You do not have permission to get access to this page.')
         
