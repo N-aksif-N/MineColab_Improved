@@ -323,7 +323,7 @@ def main():
             if user_name in user['user']: ERROR('This username already exists')
             else:
               user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
-              dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+              dump(user, open(USER, 'w'))
       
       dict_ = user['user']
       for user_ in dict_:
@@ -355,11 +355,11 @@ def main():
                   if st.session_state[f'{user_}server_settings']: server_settings = True
                   if st.session_state[f'{user_}administration']: owner = True
                   user['user'][user_]['permission'] = {'console': console, 'software': software, 'log viewing': log_viewing, 'players': players, 'plugins/mods': plugins_mods, 'world': world, 'server settings': server_settings, 'owner': owner}
-                  dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+                  dump(user, open(USER, 'w'))
               with col1:
                 if st.button('Remove', use_container_width=True, key= f'{user_}_remove'):
                   del user['user'][user_]
-                  dump(user, open(f'{path}/content/drive/My Drive/streamlit-app/user.txt', 'w'))
+                  dump(user, open(USER, 'w'))
     else: st.warning('You do not have permission to get access to this page.')
       
   elif choice == 'Player':
