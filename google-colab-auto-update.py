@@ -4,6 +4,7 @@ from os import makedirs
 from time import sleep
 from json import dump
 from requests import get
+from zipfile import ZipFile
 
 path = '/content/drive'
 drive_path = path + '/MyDrive/minecraft_server'
@@ -13,20 +14,13 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   if exists(path + '/MyDrive/streamlit-app'):
     rmtree(path + '/MyDrive/streamlit-app')
     sleep(5)
-  dict = {'app.py':                    'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/app.py',
-         'backends/settings.py':       'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/backends/settings.py',
-         'frontends/choose_server.py': 'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/choose_server.py',
-         'frontends/create_page_1.py': 'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/create_page_1.py',
-         'frontends/login.py':         'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/login.py',
-         'frontends/main_page.py':     'https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/streamlit-app/frontends/main_page.py'}
-  makedirs(path + '/MyDrive/streamlit-app')
-  makedirs(path + '/MyDrive/streamlit-app/backends')
-  makedirs(path + '/MyDrive/streamlit-app/frontends')
+  r = get('https://github.com/N-aksif-N/MineColab_Improved/archive/refs/heads/app.zip')
+  with open('/content/app.zip', 'w') as f:
+    f.write(r.content)
+  with ZipFile(path_to_zip_file, 'r') as zip_ref:
+    zip_ref.extract('streamlit-app', path=f'{path}/MyDrive')
   sleep(10)
-  for key in dict:
-    with open(f'{path}/MyDrive/streamlit-app/{key}', 'w') as f:
-      r = get(dict[key])
-      f.write(r.text)
+  remove('/content/app.zip')
   dump({'choose': True, 'user': {'authtoken': ''}}, open(path + '/MyDrive/streamlit-app/user.txt', 'w'))
   # Creating minecraft_server folder
   sleep(10)
