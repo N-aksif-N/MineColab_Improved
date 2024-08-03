@@ -23,7 +23,7 @@ if server_name == '': st.switch_page(st.Page('frontends/choose_server.py'))
 permission = user['user'][user_name]['permission']
 serverconfig = load(open(SERVERCONFIG))
 colabconfig = COLABCONFIG_LOAD(server_name)
-if permission['owner'] == True: permission = {'console': True, 'software': True, 'log viewing': True, 'players': False, 'plugins/mods': True, 'world': True, 'server settings': True, 'owner': True}
+if permission['owner'] == True: permission = {'console': True, 'software': True, 'log viewing': True, 'players': True, 'plugins/mods': True, 'world': True, 'server settings': True, 'owner': True}
 
 @st.fragment
 def PLAYER_2(name):
@@ -134,7 +134,7 @@ def main():
   elif choice == 'Server':
   
     with st.container(border= True):
-      st.markdown(f'<center>{server_name}</center>', unsafe_allow_html=True)
+      st.markdown(f'<h3 style="text-align:center">{server_name}</h3>', unsafe_allow_html=True)
       col1, tmp, col2, tmp, col3 = st.columns([1,3,1,3,1], vertical_alignment="bottom")
       with col1:
         try:
@@ -291,8 +291,7 @@ def main():
   
     if permission['software'] == True:
       SERVERJAR_ = ['vanilla', 'purpur', 'fabric', 'arclight', 'snapshot', 'paper', 'forge', 'mohist', 'velocity', 'banner']
-      button_list = []; placeholder = st.empty()
-      st.header('Software')
+      button_list = []; st.header('Software'); placeholder = st.empty()
       with placeholder.container(border=True):
         col1, col2, col3 = st.columns(3, vertical_alignment='top')
         with col1:
