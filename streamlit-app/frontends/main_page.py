@@ -343,7 +343,7 @@ def main():
               with col3:
                 st.checkbox('Server settings', value=user['user'][user_]['permission']['server settings'], key=f'{user_}server_settings')
                 st.checkbox('Administration', value=user['user'][user_]['permission']['owner'], key=f'{user_}administration')
-              tmp, col1, col2 = st.columns([9, 1, 1], vertical_alignment="top")
+              tmp, col1, col2 = st.columns([8, 1, 1], vertical_alignment="top")
               with col2:
                 if st.button('Save', use_container_width=True, key= f'{user_}_save'):
                   if st.session_state[f'{user_}console']: console = True
