@@ -15,10 +15,11 @@ for user_ in user['user']:
 if user_name == '': st.switch_page(st.Page('frontends/login.py'))
   
 drive_dir = listdir(drive_path); drive_dir.remove('serverconfig.txt');  drive_dir.remove('logs');
-st.subheader('\nCreating servers: \n')
+divider(label='Creating server:', align='center', color='red')
 server_name = st.text_input('Server name: ')
 tunnel_service = st.selectbox('Tunnel service: ',  ('ngrok', 'argo', 'zrok', 'playit', 'localtonet'), index=None)
 st.subheader('\nExtra options: \n')
+divider(label='Extra options:', align='center', color='red')
 col1, col2, col3 = st.columns(3, vertical_alignment="bottom")
 with col1:
   if st.button('Create', use_container_width= True):
