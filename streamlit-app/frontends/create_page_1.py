@@ -27,6 +27,7 @@ with col1:
         SET_SERVERCONFIG(tunnel_service, server_name)
         Install_server(server_name = server_name, server_type  = "vanilla" , version = 'vanilla - latest_version', tunnel_service = tunnel_service)
         user['user'][user_name]['server_in_use'] = server_name
+        st.session_state['ip'][server] = '___ Run Your Server ___'
         st.session_state['Starting'][server_name] = ['Start', False]
         PROGRESS()
         st.switch_page(st.Page('frontends/main_page.py'))
