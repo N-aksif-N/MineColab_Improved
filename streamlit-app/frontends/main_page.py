@@ -99,31 +99,29 @@ def SERVER_TYPE_2(server_type, server_version):
 def main():
   st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
   with st.sidebar:
-    st.markdown('<p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>',unsafe_allow_html=True)
-    if ONLINE(server_name, status=True) == 'Offline': st.error(ONLINE(server_name, status=True))
-    else: st.success(ONLINE(server_name, status=True))
-      
+    col1, col2 = st.columns(2, vertical_alignment='top')
+    with col1: st.markdown('<p align="right"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="50"/></a></p>', unsafe_allow_html=True)
+    with col2: 
+      if ONLINE(server_name, status=True) == 'Offline': st.error(ONLINE(server_name, status=True))
+      else: st.success(ONLINE(server_name, status=True))
+      sac.buttons([sac.ButtonsItem(label='Github', icon='GithubOutlined', href='https://github.com/N-aksif-N/MineColab_Improved'),
+                   sac.ButtonsItem(label='Discord', icon='DiscordOutlined', href='https://discord.gg/F9nPJTn7Nu')], direction='vertical', use_container_width= True, gap='xs')
+    st.divider()
     if colabconfig['server_type'] == 'paper' or colabconfig['server_type'] == 'purpur': choice_1 = 'Plugins'
     elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
     elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
     else: choice_1 = ''
-    if choice_1 == '': 
-      choice = sac.buttons([ sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'),
-                            sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
-                          ], direction='vertical', use_container_width= True)
-    else: 
-     choice = sac.buttons([ sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'), sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), 
-                            sac.ButtonsItem(label=choice_1, icon='git'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
-                          ], direction='vertical', use_container_width= True)
-    
-    col1, col2 = st.columns(2, vertical_alignment='top')
-    with col1: st.link_button("Github", "https://github.com/N-aksif-N/MineColab_Improved", use_container_width=True)
-    with col2: st.link_button("Discord", "https://discord.gg/F9nPJTn7Nu", use_container_width=True)
+    if choice_1 == '':  choice = sac.buttons([sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'),
+                                              sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
+                                            ], direction='vertical', use_container_width= True, gap='xs')
+    else: choice = sac.buttons([sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'), sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), 
+                                sac.ButtonsItem(label=choice_1, icon='git'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
+                              ], direction='vertical', use_container_width= True, gap='xs')
   
   if choice == 'Instructions':
   
     st.markdown('''
-      <p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="50"/></a></p>
+      <p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>
       <h1 align="center">Mine Colab [Improved]</h1>
       <p align="center">Run Minecraft Server on Google Colab</p>
       <p align="right">
