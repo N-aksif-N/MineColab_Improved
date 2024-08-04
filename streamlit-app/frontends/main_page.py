@@ -110,12 +110,12 @@ def main():
     elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
     elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
     else: choice_1 = ''
-    if choice_1 == '':  choice = sac.buttons([sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'),
-                                              sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
-                                            ], direction='vertical', use_container_width= True, gap='xs')
-    else: choice = sac.buttons([sac.ButtonsItem(label='Server', icon='amd'), sac.ButtonsItem(label= 'Console', icon='caret-right-fill'), sac.ButtonsItem(label='Log', icon='newspaper'), sac.ButtonsItem(label='Settings', icon='gear'), sac.ButtonsItem(label='Software', icon='cloud-arrow-up-fill'), 
-                                sac.ButtonsItem(label=choice_1, icon='git'), sac.ButtonsItem(label='Player', icon='person-fill'), sac.ButtonsItem(label='Worlds', icon='globe'), sac.ButtonsItem(label='Acess', icon='person-add'), sac.ButtonsItem(label='Instructions'),
-                              ], direction='vertical', use_container_width= True, gap='xs')
+    if choice_1 == '':  choice = sac.segemented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'),
+                                              sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
+                                            ], direction='vertical', use_container_width= True, gap='xs', divider=False)
+    else: choice = sac.segemented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'), sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), 
+                                sac.SegmentedItem(label=choice_1, icon='git'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
+                              ], direction='vertical', use_container_width= True, gap='xs', divider=False)
   
   if choice == 'Instructions':
   
