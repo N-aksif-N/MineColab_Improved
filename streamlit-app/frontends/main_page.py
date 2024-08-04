@@ -112,10 +112,10 @@ def main():
     else: choice_1 = ''
     if choice_1 == '':  choice = sac.segmented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'),
                                               sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
-                                            ], direction='vertical', use_container_width= True, gap='xs', divider=False)
+                                            ], direction='vertical', use_container_width= True, divider=False)
     else: choice = sac.segemented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'), sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), 
                                 sac.SegmentedItem(label=choice_1, icon='git'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
-                              ], direction='vertical', use_container_width= True, gap='xs', divider=False)
+                              ], direction='vertical', use_container_width= True, divider=False)
   
   if choice == 'Instructions':
   
