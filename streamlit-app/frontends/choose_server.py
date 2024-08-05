@@ -22,7 +22,7 @@ if drive_dir == []: ERROR('Create your server firsts'); sleep(2); st.switch_page
 if pages['choose'] == True:
 
   st.header('Choose server')
-  divider(label='Aivailable servers:', align='center', color='red')
+  divider(label='Aivailable servers:', align='center', color='blue')
   server_list = []; server = ''
   container = st.container(border=True)
   for server in drive_dir:
@@ -30,7 +30,7 @@ if pages['choose'] == True:
     if colabconfig['server_type'] != False:
       button = container.button(f':blue[{server}] - {colabconfig["server_type"].capitalize()} - {colabconfig["server_version"]} ', use_container_width= True)
       server_list.append(button)
-  divider(label='Extra options:', align='center', color='red')
+  divider(label='Extra options:', align='center', color='blue')
   col1, col2 = st.columns(2, vertical_alignment="bottom")
   with col1:
     if st.button('New Server', use_container_width= True): st.switch_page(st.Page('frontends/create_page_1.py'))
