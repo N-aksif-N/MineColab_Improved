@@ -20,7 +20,7 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   with ZipFile('/content/app.zip', 'r') as zip_ref:
     zip_ref.extractall(path='/content')
   if exists(f'{path}/MyDrive/streamlit-app'):
-    dump({'choose': True, 'user': {'authtoken': ''}}, open('/content/user.txt', 'w'))
+    copyfile(f'{path}/MyDrive/streamlit-app/user.txt', '/content/user.txt')
   move('/content/MineColab_Improved-app/streamlit-app', f'{path}/MyDrive')
   move('/content/user.txt', f'{path}/MyDrive/streamlit-app')
   sleep(10)
