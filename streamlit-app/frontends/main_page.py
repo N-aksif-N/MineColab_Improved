@@ -100,7 +100,7 @@ def main():
   st.markdown(""" <style> section[data-testid="stSidebar"] {width: 275px !important; # Set the width to your desired value} </style> """, unsafe_allow_html=True)
   with st.sidebar:
     col1, col2 = st.columns(2, vertical_alignment='top')
-    with col1: st.markdown('<p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>', unsafe_allow_html=True)
+    with col1: st.markdown(f'<p style="text-align:center">{user_name}</p><br><p align="center"><a href="https://github.com/N-aksif-N/MineColab"><img src="https://raw.githubusercontent.com/N-aksif-N/MineColab/master/minecolab.png" alt="Logo" height="80"/></a></p>', unsafe_allow_html=True)
     with col2: sac.buttons([sac.ButtonsItem(label='Github', icon='github', href='https://github.com/N-aksif-N/MineColab_Improved'), sac.ButtonsItem(label='Discord', icon='discord', href='https://discord.gg/F9nPJTn7Nu')], direction='vertical', use_container_width= True, gap='xs')
     if ONLINE(server_name, status=True) == 'Offline': st.error(ONLINE(server_name, status=True))
     else: st.success(ONLINE(server_name, status=True))
@@ -109,12 +109,10 @@ def main():
     elif colabconfig['server_type'] == 'forge' or colabconfig['server_type'] == 'fabric': choice_1 = 'Mods'
     elif colabconfig['server_type'] == 'arclight' or colabconfig['server_type'] == 'mohist' or colabconfig['server_type'] == 'banner': choice_1 = 'Plugins/Mods'
     else: choice_1 = ''
-    if choice_1 == '':  choice = sac.segmented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'),
-                                              sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
-                                            ], direction='vertical', use_container_width= True, divider=False)
-    else: choice = sac.segemented([sac.SegmentedItem(label='Server', icon='amd'), sac.SegmentedItem(label= 'Console', icon='caret-right-fill'), sac.SegmentedItem(label='Log', icon='newspaper'), sac.SegmentedItem(label='Settings', icon='gear'), sac.SegmentedItem(label='Software', icon='cloud-arrow-up-fill'), 
-                                sac.SegmentedItem(label=choice_1, icon='git'), sac.SegmentedItem(label='Player', icon='person-fill'), sac.SegmentedItem(label='Worlds', icon='globe'), sac.SegmentedItem(label='Acess', icon='person-add'), sac.SegmentedItem(label='Instructions'),
-                              ], direction='vertical', use_container_width= True, divider=False)
+    if choice_1 == '':  choice = sac.menu([sac.MenuItem(label='Server', icon='amd'), sac.MenuItem(label= 'Console', icon='caret-right-fill'), sac.MenuItem(label='Log', icon= 'journal'), sac.MenuItem(label='Settings', icon='gear'),
+                                           sac.MenuItem(label='Software', icon='cloud-arrow-up-fill'), sac.MenuItem(label='Player', icon='person-fill'), sac.MenuItem(label='Worlds', icon='globe'), sac.MenuItem(label='Acess', icon='person-add'), sac.MenuItem(type='divider'), sac.MenuItem(label='Instructions') ], variant='left-bar', open_all=True)
+    else: choice = sac.menu([sac.MenuItem(label='Server', icon='amd'), sac.MenuItem(label= 'Console', icon='caret-right-fill'), sac.MenuItem(label='Log', icon= 'journal'), sac.MenuItem(label='Settings', icon='gear'), sac.MenuItem(label='Software', icon='cloud-arrow-up-fill'), sac.MenuItem(label=choice_1, icon='git'), 
+                             sac.MenuItem(label='Player', icon='person-fill'), sac.MenuItem(label='Worlds', icon='globe'), sac.MenuItem(label='Acess', icon='person-add'), sac.MenuItem(type='divider'), sac.MenuItem(label='Instructions', icon='newspaper')], variant='left-bar', open_all=True)
   
   if choice == 'Instructions':
   
@@ -126,9 +124,6 @@ def main():
         <a href="https://colab.research.google.com/github/N-aksif-N/MineColab_Improved/blob/free-config/MineColabImproved.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
         <a href="https://github.com/N-aksif-N/MineColab_Improved/releases/download/0.1.3/MinecolabImproved.ipynb" target="_parent"><img src="https://cdn-icons-png.flaticon.com/128/10741/10741247.png" alt="Download" width="20" height="20"></a>
       </p>''', unsafe_allow_html= True)
-    st.write()
-    st.divider()
-    st.write()
     choice_ = st.selectbox('Frequent Question', ('What is Mine Colab [Improved]', 'Can Minecolab server online 24/7 ?', 'Instructions', 'How does it actually work ?', 'License', 'Found a bug?', 'Notes'))
     content = GITHUB_GUIDE(choice_)
     st.markdown(content)
@@ -317,14 +312,13 @@ def main():
     if permission['owner'] == True:
       st.header('Share access')
       col1, col2 = st.columns(2, vertical_alignment="bottom")
-      with col1:
-        user_name = st.text_input('User name: ', value='')
+      with col1: st.text_input('User name: ', label_visibility=  'collapsed', placeholder='User name', key = 'user_')
       with col2:
         if st.button('Create', use_container_width=True):
-          if user_name != '':
-            if user_name in user['user']: ERROR('This username already exists')
+          if st.session_state['user_'] != '':
+            if st.session_state['user_'] in user['user']: ERROR('This username already exists')
             else:
-              user['user'][user_name] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
+              user['user'][st.session_state['user_']] = {'permission': {'console': False, 'software': False, 'log viewing': False, 'world': False, 'server settings': False, 'owner': True}, 'user_id': [''], 'server_in_use': ''}
               dump(user, open(USER, 'w'))
       
       dict_ = user['user']
@@ -367,15 +361,18 @@ def main():
   elif choice == 'Player':
       
     if permission['players'] == True:
-      button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
-      col1, col2, col3, col4 = st.columns(4, vertical_alignment= 'bottom')
-      with col1: st.button(button_list[0], use_container_width=True, key= button_list[0])
-      with col2: st.button(button_list[1], use_container_width=True, key= button_list[1])
-      with col3: st.button(button_list[2], use_container_width=True, key= button_list[2])
-      with col4: st.button(button_list[3], use_container_width=True, key= button_list[3])
-        
-      for button_name in button_list:
-        if st.session_state[button_name]: PLAYER_2(button_name)
+      placeholder = st.empty()
+      with placeholder.container():
+        button_list = ['White_list', 'OPs', 'Banned players', 'Banned IPs']
+        col1, col2, col3, col4 = st.columns(4, vertical_alignment= 'bottom')
+        button = sac.buttons([
+            sac.ButtonsItem(label=button_list[0], icon= '', color='green'),
+            sac.ButtonsItem(label=button_list[1], icon= '', color='red'),
+            sac.ButtonsItem(label=button_list[2], icon= '', color='violet'),
+            sac.ButtonsItem(label=button_list[3], icon= '', color='let'),
+        ], index=None, align='center', variant='filled', use_container_width=True)
+      
+      if button != 'None': placeholder.empty(); sleep(1); PLAYER_2(button_name)
     else: st.warning('You do not have permission to get access to this page.')
         
   else: st.write('Are comming')
