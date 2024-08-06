@@ -1,6 +1,5 @@
 from backends.settings import ERROR, COLABCONFIG_LOAD, PROGRESS, SERVERCONFIG, drive_path, path, USER, ONLINE
 import streamlit as st
-from streamlit_antd_components import divider
 from os import listdir
 from os.path import exists, isdir
 from json import load, dump
@@ -19,19 +18,19 @@ serverconfig = load(open(SERVERCONFIG)); drive_dir = listdir(drive_path);
 if drive_dir == []: ERROR('Create your server firsts'); sleep(2); st.switch_page(st.Page('frontends/create_page_1.py'))
 else: drive_dir.remove('serverconfig.txt');  drive_dir.remove('logs');
 server = ''; status = ONLINE(server_name, status= True)
-if status: icon = '✅'; status = ':green[On]'
-else: icon = '❌'; status = ':red[Off]'
+if status: status = ':green[On]'
+else: status = ':red[Off]'
 
 if pages['choose'] == True:
 
-  st.header('Choose server: ')
+  st.header('Available servers: ')
   for server in drive_dir:
     colabconfig = COLABCONFIG_LOAD(server)
     if colabconfig['server_type'] != False:
       with st.expander(f'**:blue[{server}]** - {status}', expander=True):
-        col1, col2 = st.columns(2, vertical_alignment="top")
-        with col1: st.markdown(f'{colabconfig["server_type"].capitalize()} - {colabconfig["server_version"]}')
-        with col2: st.button(icon, key= f'{server}button'); 
+        col1, col2 = st.columns(2, vertical_alignment="bottom")
+        with col1: st.markdown('<br>'); st.markdown(f'<br>{colabconfig["server_type"].capitalize()} - {colabconfig["server_version"]}')
+        with col2: st.button(icon, key= f'{server}button'); ####
           
   st.subheader('Extra options: ')
   col1, col2 = st.columns(2, vertical_alignment="bottom")
