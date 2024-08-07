@@ -23,8 +23,9 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
     move(f'{path}/MyDrive/streamlit-app/user.txt', f'{path}/MyDrive/user.txt')
     sleep(1)
   move('/content/MineColab_Improved-app/streamlit-app', f'{path}/MyDrive')
-  remove(f'{path}/MyDrive/streamlit-app/user.txt')
-  move(f'{path}/MyDrive/user.txt', f'{path}/MyDrive/streamlit-app')
+  if exists(f'{path}/MyDrive/streamlit-app/user.txt'):
+    remove(f'{path}/MyDrive/streamlit-app/user.txt')
+    move(f'{path}/MyDrive/user.txt', f'{path}/MyDrive/streamlit-app')
   sleep(10)
   remove('/content/app.zip')
   rmtree('/content/MineColab_Improved-app')
