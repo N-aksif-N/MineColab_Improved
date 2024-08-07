@@ -20,7 +20,8 @@ if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
   with ZipFile('/content/app.zip', 'r') as zip_ref:
     zip_ref.extractall(path='/content')
   if exists(f'{path}/MyDrive/streamlit-app'):
-    move(f'{path}/MyDrive/streamlit-app/user.txt', '/content/user.txt')
+    move(f'{path}/MyDrive/streamlit-app/user.txt', f'{path}/MyDrive/user.txt')
+    sleep(1)
   move('/content/MineColab_Improved-app/streamlit-app', f'{path}/MyDrive')
   remove(f'{path}/MyDrive/streamlit-app/user.txt')
   move('/content/user.txt', f'{path}/MyDrive/streamlit-app')
