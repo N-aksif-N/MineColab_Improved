@@ -1,31 +1,23 @@
-from shutil import rmtree, move
-from os.path import exists
-from os import makedirs, remove
-from time import sleep
-from json import dump
-from requests import get
-from zipfile import ZipFile
-
 path = '/content/drive'
 drive_path = path + '/MyDrive/minecraft_server'
 
 r = get('https://raw.githubusercontent.com/N-aksif-N/MineColab_Improved/app/update.txt')
 if 'update=True' in r.text or exists(path + '/MyDrive/streamlit-app') == False:
-  if exists(path + '/MyDrive/streamlit-app'):
-    rmtree(path + '/MyDrive/streamlit-app')
-    sleep(5)
   r = get('https://github.com/N-aksif-N/MineColab_Improved/archive/refs/heads/app.zip')
   with open('/content/app.zip', 'wb') as f:
     f.write(r.content)
   with ZipFile('/content/app.zip', 'r') as zip_ref:
     zip_ref.extractall(path='/content')
-  if exists(f'{path}/MyDrive/streamlit-app/user.txt'):
-    move(f'{path}/MyDrive/streamlit-app/user.txt', f'{path}/MyDrive/user.txt')
-    sleep(1)
+  if exists(path + '/MyDrive/streamlit-app'):
+    if exists(f'{path}/MyDrive/streamlit-app/user.txt'):
+      move(f'{path}/MyDrive/streamlit-app/user.txt', '/content/user.txt')
+      sleep(5)
+    rmtree(path + '/MyDrive/streamlit-app')
+    sleep(5)
   move('/content/MineColab_Improved-app/streamlit-app', f'{path}/MyDrive')
-  if exists(f'{path}/MyDrive/streamlit-app/user.txt'):
+  if exists('/content/user.txt'):
     remove(f'{path}/MyDrive/streamlit-app/user.txt')
-    move(f'{path}/MyDrive/user.txt', f'{path}/MyDrive/streamlit-app')
+    move('/content/user.txt', f'{path}/MyDrive/streamlit-app')
   sleep(10)
   remove('/content/app.zip')
   rmtree('/content/MineColab_Improved-app')
