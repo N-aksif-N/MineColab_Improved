@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/thecoder-001/MineColab"><img src="https://github.com/N-aksif-N/MineColab_Improved/tree/app/Minecolab-badgets" alt="Logo" height="80"/></a></p>
+<p align="center"><a href="https://github.com/thecoder-001/MineColab"><img src="https://github.com/N-aksif-N/MineColab_Improved/tree/app/minecraft_title.png" alt="Logo" height="80"/></a></p>
 <h1 align="center">MineColab</h1>
 <p align="center">Run Minecolab on websites</p>
 <p align="right">
