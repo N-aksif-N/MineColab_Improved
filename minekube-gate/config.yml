@@ -1,0 +1,129 @@
+# Gate proxy configuration for Minecraft Java Edition
+config:
+  # The bind address to listen for Minecraft client connections.
+  bind: 0.0.0.0:25566
+  # Whether to use the proxy in online (authenticate players with Mojang API) or offline mode (not recommended).
+  onlineMode: false
+  # Registers servers with the proxy by giving the address of backend server a custom reference name.
+  servers:
+    # Server name: server address
+    Survival: localhost:25565
+    # The list of servers to try (ordered) to connect a player to
+  # upon login or fallback when a player is kicked from a server.
+  try:
+    - Survival
+  # Configure the response for server list pings.
+  status:
+    # The message of the day in legacy '§' format or modern text component '{"text":"...", ...}' json.
+    motd:  |
+          A Minecraft Server
+          §4Minecolab improved
+    # The maximum players shown (is not the actual player limit!).
+    showMaxPlayers: 20
+    # The server image (optimal 64x64); a path of an image file or the base64 data uri.
+    favicon: data:image/png;base64,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
+    # Whether to log ping requests in the console.
+    logPingRequests: false
+    # Whether the proxy should present itself as Forge/FML-compatible server.
+    announceForge: true
+  # Allows players transferred from other hosts via the
+  # Transfer packet (Minecraft 1.20.5) to be received.
+  # Default: false
+  acceptTransfers: false
+  # Whether the proxy should support bungee plugin channels.
+  # (Disable this if your backend servers are untrusted.)
+  bungeePluginChannelEnabled: true
+  # Whether to register builtin commands on proxy start.
+  # Default: true
+  builtinCommands: false
+  # Whether players require permissions to
+  # execute a builtin proxy command like /server.
+  # Ignore this if `builtinCommands` is set to false.
+  # (This should be set to true in production environments.)
+  # Default: false
+  requireBuiltinCommandPermissions: false
+  # Declares the proxy commands to 1.13+ clients.
+  # Default: true
+  announceProxyCommands: true
+  # Should the proxy enforce the new public key
+  # security standard added in Minecraft 1.19?
+  # Default: true
+  forceKeyAuthentication: true
+  # The default disconnect reason to kick player on proxy shutdown when no other reason was given.
+  # Either in simple legacy '§' format or modern text component '{"text":"...", ...}' json.
+  shutdownReason:  |
+     §cminecolab improved proxy is shutting down...
+     Please reconnect in a moment!
+  # Packet compression settings.
+  compression:
+    # The minimum size (in bytes) a packet must be before the proxy compresses it.
+    # The Minecraft vanilla server uses 256 by default.
+    threshold: 256
+    # Indicates what zlib compression level Gate should use.
+    # It goes from -1 to 9 where zero means no compression and -1 the default.
+    level: -1
+  # The time Gate waits to connect to a server before timing out.
+  connectionTimeout: 5s
+  # The time Gate waits to receive data from a server before timing out.
+  # If you use Forge, you may need to increase this setting.
+  readTimeout: 30s
+  # Whether to reconnect the player when disconnected from a server.
+  failoverOnUnexpectedServerDisconnect: true
+  # Whether to kick existing connected player when an online-mode player with the same name joins.
+  # This is useful for scenarios where the real Minecraft account takes precedence over the cracked one.
+  # Note that enabling this would allow real Minecraft account players to bully cracked players by
+  # taking the cracked player's name and block them from joining the server, while the online player is connected.
+  # Default: false
+  onlineModeKickExistingPlayers: false
+  # Enabled extra debug logging (only for debugging purposes).
+  debug: false
+  # This allows you to customize how player information such as IPs and UUIDs are forwarded to your server.
+  # See the documentation for more information.
+  forwarding:
+    # Options: legacy, none, bungeeguard, velocity
+    mode: legacy
+    # The secret used if the mode is velocity.
+ #  velocitySecret:  secret_key
+    # The secret used if the mode is bungeeguard.
+    #bungeeGuardSecret: secret_here
+  # Proxy protocol (HA-Proxy) determines whether Gate should support proxy protocol for players.
+  # Do not enable this if you don't know what it is.
+  proxyProtocol: false
+  # The quota settings allows rate-limiting IP (last block cut off) for certain operations.
+  # ops: The allowed operations per second.
+  # burst: The maximum operations per second (queue like). One burst unit per seconds is refilled.
+  # maxEntries: The maximum IPs to keep track of in cache for rate-limiting (if full, deletes oldest).
+  quota:
+    # Limit how many new connections can be established by the same IP range.
+    connections:
+      enabled: true
+      ops: 5
+      burst: 10
+      maxEntries: 1000
+    # Limit how many login requests can be made by the same IP range.
+    logins:
+      enabled: true
+      burst: 3
+      ops: 0.4
+      maxEntries: 1000
+  # Whether and how Gate should reply to GameSpy 4 (Minecraft query protocol on UDP) requests.
+  query:
+    enabled: false
+    port: 25577
+    showPlugins: false
+  auth:
+
+
+connect:
+  # Enabling Connect makes Gate register itself to Connect network.
+  # This feature is disabled by default, but you are encouraged to
+  # enable it and get empowered by the additional network services
+  # and by the growing community in this ecosystem.
+  enabled: true
+  # The endpoint name is a globally unique identifier of your server.
+  # If Connect is enabled, but no name is specified a random name is
+  # generated on every restart (only recommended for testing).
+  #
+  # It is supported to run multiple Gates on the same endpoint name for load balancing
+  # (use the same connect.json token file from first Gate instance).
+  #name: villemine
