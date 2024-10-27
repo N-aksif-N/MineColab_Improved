@@ -74,7 +74,7 @@ config:
   # Consulte la documentación para obtener más información.
   forwarding:
     # Opciones: legacy, none, bungeeguard, velocity
-    mode: legacy
+    mode: none
     # El secreto utilizado si el modo es velocidad.
     #velocitySecret: secret_here
     # El secreto utilizado si el modo es bungeeguard.
