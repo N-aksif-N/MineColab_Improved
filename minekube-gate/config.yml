@@ -44,7 +44,7 @@ config:
   announceProxyCommands: false
   # ¿Debe el proxy aplicar la nueva clave pública?
 # Normas de seguridad
-  forceKeyAuthentication: true
+  forceKeyAuthentication: false
   # El motivo de desconexión predeterminado para expulsar al jugador al apagar el proxy cuando no se proporcionó ningún otro motivo.
 # Ya sea en formato heredado simple '§' o en el componente de texto moderno '{"text": "...", ...}' json.
   shutdownReason: |
