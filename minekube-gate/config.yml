@@ -117,11 +117,11 @@ config:
       # Haga coincidir la dirección del host virtual con el servidor back-end.
       - host: '*'
         # El servidor backend al que conectarse si coincide.
-        backend: localhost:25947
+        backend: localhost:25565
         # La respuesta de estado de respaldo opcional cuando todos los backends de esta ruta están fuera de línea.
         fallback:
           motd: |
-            §cEl servidorr está fuera de línea.
+            §cEl servidor está fuera de línea.
             §e¡Vuelva más tarde!
           version:
             name: '§cInténtalo de nuevo más tarde!'
