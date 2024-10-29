@@ -117,3 +117,12 @@ Or join the Discord: [Minecolab Support](https://discord.gg/uCHcV3SAbs)
 - It is not advisable to fill it with as many as plugins, which is more limited to this server than its own processor, it is not very good, any hosting for 12 USD can offer a higher quality server, if you are thinking of creating something for many users, it's much better.
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/N-aksif-N)
+
+## 👥 Contributors
+This project couldn't be made just without everyone that put it's little piece of sand, so we would like to show them all in this section.
+- N-aksif-N (obviously 😅) - [Discord](https://discordapp.com/users/1157345252718424144) & [GitHub](https://github.com/N-aksif-N)
+- Jules Vera - [Discord](https://discordapp.com/users/1077357092689678346)
+- Villegas21j - [Discord](https://discordapp.com/users/997463882232774817) & [GitHub](https://github.com/Villegas21j)
+- ñ (apulise) - [Discord](https://discordapp.com/users/613833842918162511) & [GitHub](https://github.com/apulise)
+- PhobosStarlight - [Discord](https://discordapp.com/users/754122084266934343)
+- Prozoon700 - [Discord](https://discordapp.com/users/762281328733192223) & [GitHub](https://github.com/prozoon700)
