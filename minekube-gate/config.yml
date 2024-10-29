@@ -30,10 +30,10 @@ config:
   acceptTransfers: false
   # Si el proxy debe admitir canales de complementos de Bungee.
 # (Deshabilite esta opción si sus servidores backend no son confiables).
-  bungeePluginChannelEnabled: true
+  bungeePluginChannelEnabled: false
   # Si se deben registrar los comandos integrados al iniciar el proxy.
 # Predeterminado: verdadero
-  builtinCommands: true
+  builtinCommands: false
   # Si los jugadores requieren permisos para
 # ejecutar un comando proxy integrado como /server.
 # Ignore esto si `builtinCommands` está configurado como falso.
@@ -41,10 +41,10 @@ config:
   requireBuiltinCommandPermissions: false
   # Declara los comandos de proxy para los clientes de la versión 1.13+.
 # Valor predeterminado: true
-  announceProxyCommands: true
+  announceProxyCommands: false
   # ¿Debe el proxy aplicar la nueva clave pública?
 # Normas de seguridad
-  forceKeyAuthentication: true
+  forceKeyAuthentication: false
   # El motivo de desconexión predeterminado para expulsar al jugador al apagar el proxy cuando no se proporcionó ningún otro motivo.
 # Ya sea en formato heredado simple '§' o en el componente de texto moderno '{"text": "...", ...}' json.
   shutdownReason: |
@@ -74,7 +74,7 @@ config:
   # Consulte la documentación para obtener más información.
   forwarding:
     # Opciones: legacy, none, bungeeguard, velocity
-    mode: legacy
+    mode: none
     # El secreto utilizado si el modo es velocidad.
     #velocitySecret: secret_here
     # El secreto utilizado si el modo es bungeeguard.
