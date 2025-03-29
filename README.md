@@ -34,6 +34,8 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 - Read through the notebook, most of the code is self-explanatory. Run the cells that are useful for your use case.
 
 **Create Minecraft server**
+> [!TIP]  
+> Use a TPU runtime if possible and select the best [Tunneling Service](https://minecolabimproved-wiki-gg.translate.goog/es/wiki/Servicios_de_Tunneling?_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=es&_x_tr_pto=wapp) that fits with you to have the best performance.
 1. Run the cell that creates the Minecraft server.
 2. After that, you have five options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok, Localtonet is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit, Zrok may get bugged at this point but it is more reliable and does not require any hard work.
    
