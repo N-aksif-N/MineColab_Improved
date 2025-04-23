@@ -1,133 +1,145 @@
 connect:
- enabled: true
- #name: you-endpoint-name
+  enabled: true
+  #name: you-endpoint-name
+  #endpoint: your-endpoint-name
 
 config:
-
   bind: 0.0.0.0:25566
-
   onlineMode: false
 
   servers:
-   
     server1: localhost:25565
+
   try:
     - server1
-  
+
   status:
-    # El mensaje del día en formato heredado '§' o componente de texto moderno '{"text": "...", ...}' json.
+    # MOTD (Message Of The Day) is inherited using '§' or with modern components like '{"text": "...", ...}' in JSON.
     motd: |
-      §8§l//§r §6§lThe Minecolab Server §8§l// §a§l server free§8§r//
+      §8§l//§r §6§lYour MCI Server §8§l// §a§l server free§8§r//
       §8§l//§r §e  §8  §l   §e§l Online       §8§l// §r§e§lServer §8§r§l  //
-      
-      # El máximo de jugadores que se muestra (¡no es el límite real de jugadores!).
+
+    # The maximum number of players on your server (not actual, just a number. To change it go to server.properties or use the Server Options cell).
     showMaxPlayers: 100
-    # La imagen del servidor (óptima 64x64); una ruta de un archivo de imagen o la URI de datos base64.
-    favicon: data:image/png;base64,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    # Si desea registrar solicitudes de ping en la consola.
+    # The server's image (recommended: 64x64). It must be a path to the image file or a base64 data URI.
+    favicon: data:image/png;base64,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
+
+    # If you want to log ping requests to the console.
     logPingRequests: false
-    # Si el proxy debe presentarse como servidor compatible con Forge/FML.
+    # Does the proxy need to appear as compatible with Forge/FML?
     announceForge: true
+
   acceptTransfers: false
-  # Si el proxy debe admitir canales de complementos de Bungee.
-# (Deshabilite esta opción si sus servidores backend no son confiables).
+
+  # If the proxy should support Bungee plugin channels.
+  # (Disable this if your backend servers are untrusted.)
   bungeePluginChannelEnabled: false
-  # Si se deben registrar los comandos integrados al iniciar el proxy.
-# Predeterminado: verdadero
+
+  # Whether built-in commands should be registered when the proxy starts.
+  # Default: true
   builtinCommands: false
-  # Si los jugadores requieren permisos para
-# ejecutar un comando proxy integrado como /server.
-# Ignore esto si `builtinCommands` está configurado como falso.
-# (Esto debería configurarse como verdadero en el entorno de producción)
+
+  # Whether players need permissions to
+  # run a built-in proxy command like /server.
+  # Ignore this if `builtinCommands` is set to false.
+  # (This should be set to true in production environments.)
   requireBuiltinCommandPermissions: false
-  # Declara los comandos de proxy para los clientes de la versión 1.13+.
-# Valor predeterminado: true
+
+  # Declares proxy commands for clients using version 1.13+.
+  # Default value: true
   announceProxyCommands: false
-  # ¿Debe el proxy aplicar la nueva clave pública?
-# Normas de seguridad
+
+  # Should the proxy enforce the new public key
+  # security standards?
   forceKeyAuthentication: false
-  # El motivo de desconexión predeterminado para expulsar al jugador al apagar el proxy cuando no se proporcionó ningún otro motivo.
-# Ya sea en formato heredado simple '§' o en el componente de texto moderno '{"text": "...", ...}' json.
+
+  # The default disconnect reason when the proxy shuts down and no other reason was provided.
+  # Either in legacy '§' format or modern text component '{"text": "...", ...}' JSON.
   shutdownReason: |
-    §cEl servidor de Minecolab se está cerrando...
-    ¡Por favor, vuelva a conectarse en un momento!
+    §cMinecolab server is shutting down...
+    Please reconnect shortly!
+
   # Packet compression settings.
   compression:
     # The minimum size (in bytes) a packet must be before the proxy compresses it.
-    # The Minecraft vanilla server uses 256 by default.
+    # The default in Minecraft vanilla server is 256.
     threshold: 256
     # Indicates what zlib compression level Gate should use.
-    # It goes from -1 to 9 where zero means no compression and -1 the default.
+    # It goes from -1 to 9 where zero means no compression and -1 means default.
     level: -1
-  # El tiempo que Gate espera para conectarse a un servidor antes de que se agote el tiempo de espera.
+
+  # How long Gate waits to connect to a server before timing out.
   connectionTimeout: 60s
-  # El tiempo que Gate espera para recibir datos de un servidor antes de agotarse.
-  # Si usa Forge, es posible que deba aumentar esta configuración.
+
+  # How long Gate waits to receive data from a server before timing out.
+  # If using Forge, you may need to increase this setting.
   readTimeout: 60s
-  # Si desea volver a conectar el reproductor cuando se desconecta de un servidor.
+
+  # Whether to reconnect the player when disconnected from a server.
   failoverOnUnexpectedServerDisconnect: true
-  # Si se debe expulsar a un jugador conectado existente cuando se une un jugador en modo en línea con el mismo nombre.
-  # Esto es útil para situaciones en las que la cuenta real de Minecraft tiene prioridad sobre la pirateada
+
+  # Whether to kick an already connected player if another joins in online mode with the same name.
+  # This is useful in situations where...
   onlineModeKickExistingPlayers: true
-  # Se habilitó el registro de depuración adicional (solo para fines de depuración).
+ 
+  # Additional debug logging enabled (for debugging purposes only).
   debug: false
-  # Esto le permite personalizar cómo se reenvía la información del jugador, como direcciones IP y UUID, a su servidor.
-  # Consulte la documentación para obtener más información.
+  # This allows you to customize how player information, such as IP addresses and UUIDs, is forwarded to your server.
+  # See the documentation for more information.
   forwarding:
-    # Opciones: legacy, none, bungeeguard, velocity
+    # Options: legacy, none, bungeeguard, velocity
     mode: none
-    # El secreto utilizado si el modo es velocidad.
+    # The secret used if the mode is velocity.
     #velocitySecret: secret_here
-    # El secreto utilizado si el modo es bungeeguard.
+    # The secret used if the mode is bungeeguard.
     #bungeeGuardSecret: secret_here
-    # El protocolo proxy (HA-Proxy) determina si Gate debe admitir el protocolo proxy para los jugadores.
-    # No habilites esto si no sabes qué es.
+    # The proxy protocol (HA-Proxy) determines if Gate should support the proxy protocol for players.
+    # Do not enable this if you don't know what it is.
   proxyProtocol: false
-  # La configuración de cuotas permite limitar la velocidad de IP (corte del último bloque) para ciertas operaciones.
-  # ops: Las operaciones permitidas por segundo.
-  # burst: Las operaciones máximas por segundo (como una cola). Una ráfaga
+  # Quota settings allow limiting IP rate (last block cutoff) for certain operations.
+  # ops: Allowed operations per second.
+  # burst: Maximum operations per second (like a queue). A burst.
   quota:
-    # Limite la cantidad de conexiones nuevas que se pueden establecer con el mismo rango de IP.
+    # Limit the number of new connections that can be established from the same IP range.
     connections:
       enabled: true
       ops: 5
       burst: 10
       maxEntries: 1000
-    # Limite la cantidad de solicitudes de inicio de sesión que pueden realizarse por el mismo rango de IP.
+    # Limit the number of login requests that can be made from the same IP range.
     logins:
       enabled: true
       burst: 3
       ops: 0.4
       maxEntries: 1000
-  # Si Gate debe responder a las solicitudes de GameSpy 4 (protocolo de consulta de Minecraft en UDP) y cómo.
+  # Whether Gate should respond to GameSpy 4 requests (Minecraft query protocol over UDP) and how.
   query:
     enabled: false
     port: 25577
     showPlugins: false
   auth:
-    # Personaliza la URL base del servidor de sesiones de Mojang para autenticar a los jugadores del modo en línea mediante diferentes servidores de autenticación.
-   # El valor predeterminado es https://sessionserver.mojang.com/session/minecraft/
+    # Customize the base URL of Mojang's session server to authenticate online mode players using different auth servers.
+    # Default value is https://sessionserver.mojang.com/session/minecraft/
   lite:
-    # Habilite el modo Lite.
-    # Si está deshabilitado, el proxy actuará como un proxy completo con todas las funciones habilitadas, al igual que BungeeCord/Velocity.
-    # Si está habilitado, el proxy actuará como un proxy inverso liviano para 
+    # Enable Lite mode.
+    # If disabled, the proxy will act as a fully-featured proxy like BungeeCord/Velocity.
+    # If enabled, the proxy will act as a lightweight reverse proxy.
     enabled: false
-    # Las rutas a las que el proxy redirige las conexiones de los jugadores en función de la coincidencia con la dirección del host virtual.
-    # Los tests se comparan en orden de aparición
+    # The routes to which the proxy redirects player connections based on matching the virtual host address.
+    # The tests are evaluated in the order they appear.
     routes:
-      # Haga coincidir la dirección del host virtual con el servidor back-end.
+      # Match the virtual host address to the backend server.
       - host: '*'
-        # El servidor backend al que conectarse si coincide.
+        # The backend server to connect to if matched.
         backend: localhost:25565
-        # La respuesta de estado de respaldo opcional cuando todos los backends de esta ruta están fuera de línea.
+        # Optional fallback status response when all backends for this route are offline.
         fallback:
           motd: |
-            §cEl servidorr está fuera de línea.
-            §e¡Vuelva más tarde!
+            §cThe server is offline.
+            §ePlease come back later!
           version:
-            name: '§cInténtalo de nuevo más tarde!'
+            name: '§cTry again later!'
             protocol: -1
-          # El favicono opcional que se mostrará en la lista de servidores (óptimo 64x64).
-          # Acepta una ruta de un archivo de imagen o la URI de datos base64.
+          # Optional favicon to be shown in the server list (optimal 64x64).
+          # Accepts a path to an image file or a base64 data URI.
           favicon: data:image/png;base64,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
-   
-  
