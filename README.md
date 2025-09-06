@@ -40,42 +40,59 @@ Of course, it's possible but with a little hard work. Google Colab is a free ser
 2. After that, you have five options. You can either use Ngrok, PlayIt, or Cloudflare's Argo. Ngrok, Localtonet is easy to set up and doesn't require anything to be installed by the clients but it can often be quite unreliable. Argo doesn't have such limitations but requires a bit more work. Playit, Zrok may get bugged at this point but it is more reliable and does not require any hard work.
    
 - **[Ngrok](https://ngrok.com)**
-  + Follow the prompts.
-  + The IP will change whenever you restart the server.
+  1. Follow the prompts.
+  2. The IP will change whenever you restart the server.
+
 - **[Cloudflare's argo](https://www.cloudflare.com/)** :
-    - If the 'Your free tunnel has started!' notification appears => Done.
-    - Access to your server:
+  - If the 'Your free tunnel has started!' notification appears => Done.
+  - Access to your server:
     1. Download [Cloudflared client](https://github.com/cloudflare/cloudflared/releases/).
     2. Launch the binary with `<your Cloudflare file name> access tcp --hostname <tunnel_address> --url 127.0.0.1:25565` (note: tunnel_address is your address which has been set on your Cloudflare).
     4. Finally, connect to `127.0.0.1:25565` from the minecraft client which is located in that machine.
 
 - **[Localtonet](https://localtonet.com/)**:
-  
   1. Navigate to [TCP-UDG](https://localtonet.com/tunnel/tcpudp) page. Select TCP in Protocol Types.
   2. Get your authtoken from [Authtoken](https://localtonet.com/usertoken).
   3. Pick the server you'd like your tunnel to operate on.
   4. Input the IP and Port values the tunnel will listen to, in this case, for Minecraft, it's typically IP: 127.0.0.1 and Port: 25565.
   5. Finally, create and start your tunnel by pressing the Start button.
 
-  - Read more on [how-to-use-localtonet-with-minecraft](https://localtonet.com/documents/using-localtonet-with-minecraft)
+  - Read more on [how-to-use-localtonet-with-minecraft](https://localtonet.com/documents/using-localtonet-with-minecraft).
   
 - **[Zrok](https://zrok.io/)**: 
-  1. Download the zrok app through [link](https://docs.zrok.io/docs/getting-started/)
-  2. Open the shell. Type `zrok invite` to sign up and get the authtoken
-  3. Follow the prompts
+  1. Download the zrok app through [link](https://docs.zrok.io/docs/getting-started/).
+  2. Open the shell. Type `zrok invite` to sign up and get the authtoken.
+  3. Follow the prompts.
 
-- **[PlayIt](https://playit.gg/)**: follow the prompts.
+- **[PlayIt](https://playit.gg/)**:
+  1. Follow the prompts.
+ 
+- **[Minekube](https://connect.minekube.com)**:
+  1. Create or edit a server and select the Minekube service in the Change Tunnel Service section or during server creation.
+  2. Create an account on Minekube and generate an Endpoint.
+  3. Reboot, copy the Token and paste it into Change Tunnel Token (in the tunneling options, with minekube-gate enabled).
+  4. Turn the server on and then off to generate the necessary folders.
+  5. Open your file server.properties and disable the following parameters:
+     - enforce-secure-profile
+     - online-mode
+  6. Then, open the Minekube file config.yml (located in the tunnels folder).
+  7. Find the line that contains `#name you-endpoint-name`, remove the `#` and after the `:` write the name of your Endpoint.
+  8. Finally, turn on the server and let the notebook create a PlayIt connector for you automatically.
+    - Take into account that if you haven't registered PlayIt on the notebook before, you will be asked for.
+
+> [!CAUTION]  
+> When writing your name you should just write the name before the first colon of the link (without the `.play.minekube`).
 
 # :zap:  So, how does it actually work?
 MInecolab [Improved] is an alternative Minecolab project. Therefore, it has all the main features, which the Minecolab project does: 
  
- 1. Update the system's apt-cache.
- 2. Install Openjdk-8 (For Minecraft versions below 1.17) or Openjdk-17 (For Minecraft versions over or in 1.17) through apt-get.
- 3. Mount Google Drive to access the Minecraft folder (Drive is used here to provide persistent storage).
- 4. Setup Argo/ngrok/playit Tunnel (Opening a tunnel at port 25565) depending on the `tunnel_service` variable.
- 5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of your Google Drive.)
- 6. List/Print the file list on the screen to indicate successful directory change.
- 7. Startup the Minecraft server (with optimized JVM parameters from [Aikar's guide)](https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/) and from GC logging
+1. Update the system's apt-cache.
+2. Install Openjdk-8 (For Minecraft versions below 1.17) or Openjdk-17 (For Minecraft versions over or in 1.17) through apt-get.
+3. Mount Google Drive to access the Minecraft folder (Drive is used here to provide persistent storage).
+4. Setup Argo/ngrok/playit Tunnel (Opening a tunnel at port 25565) depending on the `tunnel_service` variable.
+5. Change the directory to the Minecraft server folder on Google Drive ("Minecraft-server" is the default, located in the root directory of your Google Drive.)
+6. List/Print the file list on the screen to indicate successful directory change.
+7. Startup the Minecraft server (with optimized JVM parameters from [Aikar's guide)](https://aikar.co/2018/07/02/tuning-the-jvm-g1gc-garbage-collector-flags-for-minecraft/) and from GC logging
 
 Additionally, Minecolab [Improved] has more new features:
 
